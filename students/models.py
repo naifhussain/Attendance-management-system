@@ -22,7 +22,7 @@ class StudentSectionInfo(models.Model):
 
 
 class StudentBranch(models.Model): #new
-    branch_short_name = models.CharField(max_length=3)
+    branch_name = models.CharField(max_length=3)
 
     def __str__(self):
         return self.branch_short_name
@@ -39,9 +39,7 @@ class StudentSubjectInfo(models.Model):
     subject_name = models.CharField(max_length=30) #new
     subject_code = models.CharField(max_length=10,primary_key=True) #new
     professor_name = models.ForeignKey(TeacherInfo,on_delete=CASCADE)
-    section_name = models.ForeignKey(StudentSectionInfo,on_delete=CASCADE)
     branch_name = models.ForeignKey(StudentBranch,on_delete=CASCADE)
-    batch_year = models.ForeignKey(StudentBatch,on_delete=CASCADE)
 
     def __str__(self):
         return self.subject_name
@@ -71,6 +69,7 @@ class StudentInfo(models.Model):
     gender = models.CharField(choices=gender_choice, max_length=10)
     section_type = models.ForeignKey(StudentSectionInfo, on_delete=models.CASCADE)
     shift_type = models.ForeignKey(StudentShiftInfo, on_delete=models.CASCADE)
+    branch_name = models.ForeignKey(StudentBranch,on_delete=CASCADE)
     student_img = models.ImageField(upload_to='photos/%Y/%m/%d/') 
 
     class Meta:
