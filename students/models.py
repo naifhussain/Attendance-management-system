@@ -27,22 +27,21 @@ class StudentBranch(models.Model): #new
     def __str__(self):
         return self.branch_short_name
 
-class ClassName(models.Model):
-    batch_year=models.ForeignKey(StudentBatch,on_delete=CASCADE)
-    branch_name =models.ForeignKey(StudentBranch,on_delete=CASCADE)
-    section_name = models.ForeignKey(StudentSectionInfo,on_delete=CASCADE)
-    # class_code= section_name+str(batch_year)+branch_name
-    
+class StudentSem(models.Model):
+    sem_number = models.IntegerField(max_length=1,primary_key=True)
+
     def __str__(self):
-        return self.branch_name
+        return self.sem_number
+
+
 
 class StudentSubjectInfo(models.Model):
     subject_name = models.CharField(max_length=30) #new
     subject_code = models.CharField(max_length=10,primary_key=True) #new
     professor_name = models.ForeignKey(TeacherInfo,on_delete=CASCADE)
-    # section_name = models.ForeignKey(StudentSectionInfo,on_delete=CASCADE)
-    # branch_name = models.ForeignKey(StudentBranch,on_delete=CASCADE)
-    # batch_year = models.ForeignKey(StudentBatch,on_delete=CASCADE)
+    section_name = models.ForeignKey(StudentSectionInfo,on_delete=CASCADE)
+    branch_name = models.ForeignKey(StudentBranch,on_delete=CASCADE)
+    batch_year = models.ForeignKey(StudentBatch,on_delete=CASCADE)
 
     def __str__(self):
         return self.subject_name
@@ -70,28 +69,12 @@ class StudentInfo(models.Model):
         ("Female", "Female"),
     )
     gender = models.CharField(choices=gender_choice, max_length=10)
-    subject_name = models.ForeignKey(StudentSubjectInfo, on_delete=models.CASCADE)
     section_type = models.ForeignKey(StudentSectionInfo, on_delete=models.CASCADE)
     shift_type = models.ForeignKey(StudentShiftInfo, on_delete=models.CASCADE)
-    student_img = models.ImageField(upload_to='photos/%Y/%m/%d/')
-
-    sub1 = models.ForeignKey(StudentSubjectInfo, on_delete=models.CASCADE,related_name='sub1')
-    sub1_attendance = models.IntegerField()
-    sub2 = models.ForeignKey(StudentSubjectInfo, on_delete=models.CASCADE,related_name='sub2')
-    sub2_attendance = models.IntegerField()
-
-    sub3 = models.ForeignKey(StudentSubjectInfo, on_delete=models.CASCADE,related_name='sub3')
-    sub3_attendance = models.IntegerField()
-    sub4 = models.ForeignKey(StudentSubjectInfo, on_delete=models.CASCADE,related_name='sub4')
-    sub4_attendance = models.IntegerField()
-
-    sub5 = models.ForeignKey(StudentSubjectInfo, on_delete=models.CASCADE,related_name='sub5')
-    sub5_attendance = models.IntegerField()
-    sub6 = models.ForeignKey(StudentSubjectInfo, on_delete=models.CASCADE,related_name='sub6')
-    sub6_attendance = models.IntegerField()   
+    student_img = models.ImageField(upload_to='photos/%Y/%m/%d/') 
 
     class Meta:
-        unique_together = ["usn", "subject_name"]
+        unique_together = ["usn"]
 
     def __str__(self):
         return self.name

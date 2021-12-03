@@ -8,7 +8,6 @@ admin.site.register(StudentShiftInfo)
 admin.site.register(StudentInfo)
 admin.site.register(StudentBranch)
 admin.site.register(StudentBatch)
-admin.site.register(ClassName)
 
 
 
