@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields import NullBooleanField
 
 # Create your models here.
 class TeacherDeptInfo(models.Model):
@@ -9,7 +10,7 @@ class TeacherDeptInfo(models.Model):
 
 class TeacherInfo(models.Model):
     name = models.CharField(max_length=100)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True,null=True)
     age = models.IntegerField()
     gender_choice = (
         ("male", "Male"),
@@ -17,7 +18,7 @@ class TeacherInfo(models.Model):
     )
     gender = models.CharField(choices=gender_choice, max_length=10)
     teacher_img = models.ImageField(upload_to='photos/%Y/%m/%d/')
-    joining_date = models.DateField()
+    joining_date = models.DateField(null=True)
     dept_type = models.ForeignKey(TeacherDeptInfo, on_delete=models.CASCADE)
 
     def __str__(self):

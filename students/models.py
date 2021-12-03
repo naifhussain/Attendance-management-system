@@ -25,7 +25,7 @@ class StudentBranch(models.Model): #new
     branch_name = models.CharField(max_length=3)
 
     def __str__(self):
-        return self.branch_short_name
+        return self.branch_name
 
 class StudentSem(models.Model):
     sem_number = models.IntegerField(max_length=1,primary_key=True)
@@ -59,7 +59,7 @@ class StudentShiftInfo(models.Model):
 class StudentInfo(models.Model):
     batch_year = models.ForeignKey(StudentBatch,max_length=4,on_delete=CASCADE)
     admission_date = models.DateField()
-    usn = models.CharField(max_length=10, primary_key=True)
+    usn = models.CharField(max_length=10)
     name = models.CharField(max_length=100)
     age = models.IntegerField()
     gender_choice = (
@@ -70,7 +70,27 @@ class StudentInfo(models.Model):
     section_type = models.ForeignKey(StudentSectionInfo, on_delete=models.CASCADE)
     shift_type = models.ForeignKey(StudentShiftInfo, on_delete=models.CASCADE)
     branch_name = models.ForeignKey(StudentBranch,on_delete=CASCADE)
-    student_img = models.ImageField(upload_to='photos/%Y/%m/%d/') 
+    student_img = models.ImageField(upload_to='photos/%Y/%m/%d/')
+
+
+    sub1 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub1',null=True)
+    sub1_att = models.IntegerField(null=True)
+    sub2 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub2',null=True)
+    sub2_att = models.IntegerField(null=True) 
+    sub3 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub3',null=True)
+    sub3_att = models.IntegerField(null=True) 
+    sub4 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub4',null=True)
+    sub4_att = models.IntegerField(null=True)
+    sub5 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub5',null=True)
+    sub5_att = models.IntegerField(null=True) 
+    sub6 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub6',null=True)
+    sub6_att = models.IntegerField(null=True)
+
+    lab1 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='lab1',null=True)
+    lab2 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='lab2',null=True)
+
+
+
 
     class Meta:
         unique_together = ["usn"]
@@ -104,3 +124,4 @@ class Attendance(models.Model):
 
         # # for integer field
         # return str(self.student.mothers_nid)
+

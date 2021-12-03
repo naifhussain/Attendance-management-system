@@ -2,47 +2,136 @@
 {% load static %}
 
 {% block content %}
+<style>
+    
+    .avatardiv{
+        display: flex;
+        justify-content: center;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        border-radius: 10px;
+        
+    }
+    .avatar{
+        vertical-align:middle;
+        background-color: #fff;
+        border-radius: 50%;
+        height: 150px;
+        width:150px;
+        
+    }
+    #table2{
+        align-self: center;
+    }
+    
+    td,th{
+        border: 1px solid black;
+        text-align: center;
+        padding:8px
+    }
+    tr:nth-child(even){
+        background-color: #dddddd;
+    }
+
+</style>
+
+        
+        <div class="avatardiv">
+            <img src="{{ single_student.student_img.url }}"   class="avatar"/>
+        </div>
+    
+      
+    
 
 <div class="row">
-    <div class="col-lg-7">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                 <i class="fa fa-align-justify"></i> Students Personal Info
+            </div>
+            <div class="card-body" >
+
+                <h7>Name:<h5><b>{{ single_student.name }}</b></h5></h7>
+                <h7>Age : <h5><b>{{ single_student.age}}</b></h5></h7>
+                <h7>Gender : <h5><b>{{ single_student.gender}}</b></h5></h7>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
         <div class="card">
             <div class="card-header">
                  <i class="fa fa-align-justify"></i> Students Academic Info
             </div>
             <div class="card-body">
-                <tbody>
-                    <tr>
-                        <td>Academic Year: {{ single_student.batch_year }}</td>
-                        <br>
-                        <td>Admission Date: {{ single_student.admission_date }}</td>
-                        <br>
-                        <td>Admission ID: {{ single_student.usn }}</td>
-                        <br>
-                        <td>Class: {{ single_student.class_type }}</td>
-                        <br>
-                        <td>Section: {{ single_student.section_type }}</td>
-                        <br>
-                        <td>Shift: {{ single_student.shift_type }}</td>
-                    </tr>
-                </tbody>
+                
+                    
+                        Academic Year: <h5><b>  {{ single_student.batch_year }}</b></h5>
+                        
+                        Admission Date: <h5><b>  {{ single_student.admission_date }}</b></h5>
+                        
+                        Admission ID: <h5><b>  {{ single_student.usn }}</b></h5>
+                        
+                        Section: <h5><b>  {{ single_student.section_type }}</b></h5>
+                        
+                        Shift: <h5><b>  {{ single_student.shift_type }}</b></h5>
+                    
             </div>
         </div>
     </div>
-    <div class="col-lg-5">
+    
+   
+    <div class="col-lg-4">
         <div class="card">
             <div class="card-header">
-                 <i class="fa fa-align-justify"></i> Students Personal Info
+                 <i class="fa fa-align-justify"></i> Students Attendance
             </div>
-            <div class="card-body">
-
-                <h6>{{ single_student.name }}</h6>
-                <h6>Age : {{ single_student.age}}</h6>
-                <h6>Gender : {{ single_student.gender}}</h6>
-
+            <div class="card-body" id="table2">
+                <table>
+                    <th>Subject Name</th>
+                    <th>Attendance(in %)</th>
+                    <tr>
+                        <td>{{ single_student.sub1 }} </td>
+                        <td>{{ single_student.sub1_att}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ single_student.sub2 }} </td>
+                        <td>{{ single_student.sub2_att}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ single_student.sub3 }} </td>
+                        <td>{{ single_student.sub3_att}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ single_student.sub4 }} </td>
+                        <td>{{ single_student.sub4_att}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ single_student.sub5 }} </td>
+                        <td>{{ single_student.sub5_att}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ single_student.sub6 }} </td>
+                        <td>{{ single_student.sub6_att}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ single_student.lab1 }} </td>
+                        <td>{{ single_student.lab1_att}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ single_student.lab2 }} </td>
+                        <td>{{ single_student.lab2_att}}</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
+
+    
+        
+    
 </div>
+
 
 <!-- <div class="row">
     <div class="col-lg-6">
