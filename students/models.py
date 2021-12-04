@@ -38,7 +38,7 @@ class StudentSem(models.Model):
 class StudentSubjectInfo(models.Model):
     subject_name = models.CharField(max_length=30) #new
     subject_code = models.CharField(max_length=10,primary_key=True) #new
-    professor_name = models.ForeignKey(TeacherInfo,on_delete=CASCADE)
+    professor_name = models.ForeignKey(TeacherInfo,on_delete=CASCADE,default=None, blank=True, null=True)
     branch_name = models.ForeignKey(StudentBranch,on_delete=CASCADE)
 
     def __str__(self):
