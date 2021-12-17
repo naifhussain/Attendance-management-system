@@ -18,7 +18,6 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Department</th>
-                            <th>Subject</th>
                             <th>Joining Date</th>
                             <th>Action</th>
                         </tr>
@@ -30,7 +29,6 @@
                                 <td>{{ teacher.name }}</td>
                                 <td>{{ teacher.email }}</td>
                                 <td>{{ teacher.dept_type }}</td>
-                                <td>{{ teacher.sub_type }}</td>
                                 <td>{{ teacher.joining_date }}</td>
                                 <td>
                                     <a href="{% url 'single_teacher' teacher.id %}">

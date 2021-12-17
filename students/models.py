@@ -29,9 +29,10 @@ class StudentBranch(models.Model): #new
 
 class StudentSem(models.Model):
     sem_number = models.IntegerField(max_length=1,primary_key=True)
+    sem_name = models.CharField(max_length=10)
 
     def __str__(self):
-        return self.sem_number
+        return self.sem_name
 
 
 
@@ -61,6 +62,7 @@ class StudentInfo(models.Model):
     admission_date = models.DateField()
     usn = models.CharField(max_length=10)
     name = models.CharField(max_length=100)
+    sem_name = models.ForeignKey(StudentSem,on_delete=CASCADE)
     age = models.IntegerField()
     gender_choice = (
         ("male", "Male"),
@@ -74,21 +76,22 @@ class StudentInfo(models.Model):
 
 
     sub1 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub1',null=True)
-    sub1_att = models.IntegerField(null=True)
+    sub1_att = models.IntegerField(null=True,default=0)
     sub2 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub2',null=True)
-    sub2_att = models.IntegerField(null=True) 
+    sub2_att = models.IntegerField(null=True,default=0) 
     sub3 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub3',null=True)
-    sub3_att = models.IntegerField(null=True) 
+    sub3_att = models.IntegerField(null=True,default=0) 
     sub4 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub4',null=True)
-    sub4_att = models.IntegerField(null=True)
+    sub4_att = models.IntegerField(null=True,default=0)
     sub5 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub5',null=True)
-    sub5_att = models.IntegerField(null=True) 
+    sub5_att = models.IntegerField(null=True,default=0) 
     sub6 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub6',null=True)
-    sub6_att = models.IntegerField(null=True)
+    sub6_att = models.IntegerField(null=True,default=0)
 
     lab1 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='lab1',null=True)
+    lab1_att = models.IntegerField(null=True,default=0)
     lab2 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='lab2',null=True)
-
+    lab2_att = models.IntegerField(null=True,default=0)
 
 
 
@@ -102,8 +105,8 @@ class StudentInfo(models.Model):
 class AttendanceManager(models.Manager):
     def create_attendance(self, student_class, student_id):
         student_obj = StudentInfo.objects.get(
-            class_type__class_short_form=student_class,
-            admission_id=student_id
+            sub1=student_class,
+            usn=student_id
         )
         attendance_obj = Attendance.objects.create(student=student_obj, status=1)
         return attendance_obj
@@ -120,7 +123,7 @@ class Attendance(models.Model):
         unique_together = ['student', 'date']
 
     def __str__(self):
-        return self.student.admission_id
+        return self.student.usn
 
         # # for integer field
         # return str(self.student.mothers_nid)

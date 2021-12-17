@@ -68,10 +68,33 @@ def delete_student(request, student_id):
 
 
 def attendance_count(request):
-    subject_names = request.GET.get("subject_name", None)
-    if subject_names:
-        student_list = StudentInfo.objects.filter(subject_name=subject_names)
-        context = {"student_list": student_list}
+    subject = request.GET.get("subject", None)
+    if subject:
+        student_list_sub1 = StudentInfo.objects.filter(sub1__subject_name=subject)
+        student_list_sub2 = StudentInfo.objects.filter(sub2__subject_name=subject)
+        student_list_sub3 = StudentInfo.objects.filter(sub3__subject_name=subject)
+        student_list_sub4 = StudentInfo.objects.filter(sub4__subject_name=subject)
+        student_list_sub5 = StudentInfo.objects.filter(sub5__subject_name=subject)
+        student_list_sub6 = StudentInfo.objects.filter(sub6__subject_name=subject)
+        student_list_lab1 = StudentInfo.objects.filter(lab1__subject_name=subject)
+        student_list_lab2 = StudentInfo.objects.filter(lab2__subject_name=subject)
+        if student_list_sub1:
+            context = {"student_list_sub1": student_list_sub1}
+        elif student_list_sub2:
+            context = {"student_list_sub2": student_list_sub2}
+        elif student_list_sub3:
+            context = {"student_list_sub3": student_list_sub3}
+        elif student_list_sub4:
+            context = {"student_list_sub4": student_list_sub4}
+        elif student_list_sub5:
+            context = {"student_list_sub5": student_list_sub5}
+        elif student_list_sub6:
+            context = {"student_list_sub6": student_list_sub6}
+        elif student_list_lab1:
+            context = {"student_list_lab1": student_list_lab1}
+        elif student_list_lab2:
+            context = {"student_list_lab2": student_list_lab2}
+        
     else:
         context = {}
     return render(request, "students/attendance_count.html", context)

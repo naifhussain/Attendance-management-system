@@ -1,77 +1,76 @@
-{% extends 'base/base.html' %}
-{% load static %}
-
-{% block content %}
+{% extends 'base/base.html' %} {% load static %} {% block content %}
 <style>
-    
-    .avatardiv{
-        display: flex;
-        justify-content: center;
-        padding-bottom: 20px;
-        padding-top: 20px;
-        border-radius: 10px;
-        
-    }
-    .avatar{
-        vertical-align:middle;
-        background-color: #fff;
-        border-radius: 50%;
-        height: 150px;
-        width:150px;
-        
-    }
-    #table2{
-        align-self: center;
-    }
-    
-
+  .avatardiv {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-radius: 10px;
+  }
+  .avatar {
+    vertical-align: middle;
+    background-color: #fff;
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+  }
+  #table2 {
+    align-self: center;
+  }
 </style>
 
-
 <div class="avatardiv">
-    <img src="{{ single_teacher.teacher_img.url }}" class="avatar" />
+  <img src="{{ single_teacher.teacher_img.url }}" class="avatar" />
 </div>
 <div class="row">
-    <div class="col-lg-7">
-        <div class="card">
-            <div class="card-header">
-                 <i class="fa fa-align-justify"></i> Teacher Information
-            </div>
-            <div class="card-body">
-            
-                        Full Name:<h4><b>{{ single_teacher.name }}</b></h4> 
-                        
-                        Email: <h4><b>{{ single_teacher.email }}</b></h4>
-                        
-                        Age: <h4><b>{{ single_teacher.age }}</b></h4>
-                        
-                        Gender:<h4><b>{{ single_teacher.gender }}</b></h4> 
-    
-                        Joining Date:<h4><b>{{ single_teacher.joining_date }}</b></h4> 
-                    
-                        
-                    
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-5">
-        <div class="card">
-            <div class="card-header">
-                 <i class="fa fa-align-justify"></i> Teachers Personal Info
-            </div>
-            <div class="card-body">
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-header">
+        <i class="fa fa-align-justify"></i> Teacher Information
+      </div>
+      <div class="card-body">
+        Full Name:
+        <h4><b>{{ single_teacher.name }}</b></h4>
 
-                <h7>Department: <h4><b>{{ single_teacher.dept_type }}</b></h4></h7>
-                <h7>Subject:<h4><b>{{ single_teacher.sub1 }} 
-                    <br>{{ single_teacher.sub2 }}
-                    <br>{{ single_teacher.sub3 }}</b></h4> 
-                    </h7>
-            </div>
-        </div>
+        Email:
+        <h4><b>{{ single_teacher.email }}</b></h4>
+
+        Age:
+        <h4><b>{{ single_teacher.age }}</b></h4>
+
+        Gender:
+        <h4><b>{{ single_teacher.gender }}</b></h4>
+
+        Joining Date:
+        <h4><b>{{ single_teacher.joining_date }}</b></h4>
+      </div>
     </div>
+  </div>
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-header">
+        <i class="fa fa-align-justify"></i> Teachers Personal Info
+      </div>
+      <div class="card-body">
+        <h7
+          >Department:
+          <h4><b>{{ single_teacher.dept_type }}</b></h4></h7
+        >
+        <h7
+          >Subject taught:
+          <h4>
+            <b
+              >{% if single_teacher.sub1%}{{ single_teacher.sub1 }} {% endif %}
+
+              <br />{% if single_teacher.sub2%} {{ single_teacher.sub2 }} {% endif %}
+
+              <br />{% if single_teacher.sub3%} {{ single_teacher.sub3 }} {%endif %}
+            </b>
+          </h4>
+        </h7>
+      </div>
+    </div>
+  </div>
 </div>
 
-
-
 {% endblock %}
-
