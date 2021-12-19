@@ -1,8 +1,11 @@
+from django.http.response import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.contrib import messages
 from .forms import CreateStudent
+import datetime
+from django.db.models import F
 
 # Create your views here.
 def student_list(request):
@@ -99,3 +102,9 @@ def attendance_count(request):
         context = {}
     return render(request, "students/attendance_count.html", context)
 
+def increaseatt(request):
+    subject=request.GET.get("subject", 'Python')
+    t = StudentInfo.objects.get(id=1)
+    t.sub1_att += 1 
+    t.save()
+    return HttpResponseRedirect('count?subject=%s'%subject)
