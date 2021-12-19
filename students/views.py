@@ -102,9 +102,9 @@ def attendance_count(request):
         context = {}
     return render(request, "students/attendance_count.html", context)
 
-def increaseatt(request):
+def increase_att(request,student_id):
     subject=request.GET.get("subject", 'Python')
-    t = StudentInfo.objects.get(id=1)
+    t = StudentInfo.objects.get(id=student_id)
     t.sub1_att += 1 
     t.save()
     return HttpResponseRedirect('count?subject=%s'%subject)
