@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %} {% load static %} {% block content %}
+
+
+
+<div class="row">
+  <div class="col-lg-7">
+    <div class="card">
+      <div class="card-header">
+        <i class="fa fa-align-justify"></i> Subject Information
+      </div>
+      <div class="card-body">
+        Subject Name:
+        <h4><b>{{ single_subject.subject_name }}</b></h4>
+
+        Subject Code:
+        <h4><b>{{ single_subject.subject_code }}</b></h4>
+
+        Branch:
+        <h4><b>{{ single_subject.branch_name }}</b></h4>
+
+        Taught By:
+        <h4><b>{{ single_subject.professor_name }}</b></h4>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include 'partials/_alerts.html' %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> Subject List</div>
+            <div class="card-body">
+                <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>Subject Name</th>
+                            <th>Subject Code</th>
+                            <th>Professor Name</th>
+                            <th>Branch Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for subject in subjects %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ subject.subject_name }}</td>
+                                <td>{{ subject.professor_name }}</td>
+                                <td>{{ subject.branch_name }}</td>
+            
+                                <td>
+                                    <!-- <a href="{% url 'attendance_count' %}">
+                                        <button type="button" class="btn btn-primary">Attendance</button>
+                                    </a> -->
+                                    <a href="{% url 'single_subject' subject.subject_code %}">
+                                        <button type="button" class="btn btn-primary">Details</button>
+                                    </a>
+                                    <a href="{% url 'edit_subject' subject.subject_code %}">
+                                        <button type="button" class="btn btn-info"><i class="fa fa-edit"></i></button>
+                                    </a>
+                                    <a href="{% url 'delete_subject' subject.subject_code %}">
+                                        <button type="button" class="btn btn-danger">X</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        {% if subjects.has_other_pages %}
+            <ul class="pagination">
+                {% if subjects.has_previous %}
+                    <li class="page-item">
+                        <a href="?page={{subjects.previous_page_number}}" class="page-link">Prev</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">Prev</a>
+                    </li>
+                {% endif %}
+                {% for i in subjects.paginator.page_range %}
+                    {% if subjects.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{ i }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a href="?page={{ i }}" class="page-link">{{ i }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% if subjects.has_next %}
+                    <li class="page-item">
+                        <a href="?page={{subjects.next_page_number}}" class="page-link">Next</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
