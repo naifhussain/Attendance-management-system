@@ -73,8 +73,6 @@ class StudentInfo(models.Model):
     shift_type = models.ForeignKey(StudentShiftInfo, on_delete=models.CASCADE)
     branch_name = models.ForeignKey(StudentBranch,on_delete=CASCADE)
     student_img = models.ImageField(upload_to='photos/%Y/%m/%d/')
-
-
     sub1 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub1',null=True)
     sub1_att = models.IntegerField(null=True,default=0)
     sub2 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub2',null=True)
