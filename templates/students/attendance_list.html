@@ -4,14 +4,17 @@
 {% block content %}
 
 
-
+<h1>{% for sub in subject%}
+    {{sub.subject_name}}
+    {% endfor %}Attendance</h1>
 {% if student_list_sub1 %} <!-- for 1st subject--> 
+
     <table class="table table-responsive-sm table-bordered table-striped table-sm">
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_sub1 %}
-                {{std_list.sub1}} 
+            <th>{% for sub in subject %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -33,8 +36,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_sub2 %}
-                {{std_list.sub2}} 
+            <th>{% for sub in subject %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -56,8 +59,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_sub3 %}
-                {{std_list.sub3}} 
+            <th>{% for sub in subject %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -79,8 +82,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_sub4 %}
-                {{std_list.sub4}} 
+            <th>{% for sub in subject %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -102,8 +105,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_sub5 %}
-                {{std_list.sub5}} 
+            <th>{% for sub in subject %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -125,8 +128,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_sub6 %}
-                {{std_list.sub6}} 
+            <th>{% for sub in subject %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -148,8 +151,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_lab1 %}
-                {{std_list.lab1}} 
+            <th>{% for sub in subject %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -171,8 +174,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_lab2 %}
-                {{std_list.lab2}} 
+            <th>{% for sub in subject %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>

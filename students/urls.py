@@ -9,6 +9,16 @@ urlpatterns = [
     path('delete/<int:student_id>', views.delete_student, name='delete_student'),
     path('attendance/count/', views.attendance_count, name='attendance_count'),
 
+    #take attendance button urls
+    path('takeattendance/sub1/<student_id>',views.take_sub1_att,name='take_sub1_att'),
+    path('takeattendance/sub2/<student_id>',views.take_sub2_att,name='take_sub2_att'),
+    path('takeattendance/sub3/<student_id>',views.take_sub3_att,name='take_sub3_att'),
+    path('takeattendance/sub4/<student_id>',views.take_sub4_att,name='take_sub4_att'),
+    path('takeattendance/sub5/<student_id>',views.take_sub5_att,name='take_sub5_att'),
+    path('takeattendance/sub6/<student_id>',views.take_sub6_att,name='take_sub6_att'),
+    path('takeattendance/lab1/<student_id>',views.take_lab1_att,name='take_lab1_att'),
+    path('takeattendance/lab2/<student_id>',views.take_lab2_att,name='take_lab2_att'),
+
     #attendance of each subject
     path('sub1/<student_id>',views.increase_sub1_att,name='increase_sub1_att'),
     path('sub2/<student_id>',views.increase_sub2_att,name='increase_sub2_att'),
@@ -16,8 +26,8 @@ urlpatterns = [
     path('sub4/<student_id>',views.increase_sub4_att,name='increase_sub4_att'),
     path('sub5/<student_id>',views.increase_sub5_att,name='increase_sub5_att'),
     path('sub6/<student_id>',views.increase_sub6_att,name='increase_sub6_att'),
-    path('sub7/<student_id>',views.increase_lab1_att,name='increase_lab1_att'),
-    path('sub8/<student_id>',views.increase_lab2_att,name='increase_lab2_att'),
+    path('lab1/<student_id>',views.increase_lab1_att,name='increase_lab1_att'),
+    path('lab2/<student_id>',views.increase_lab2_att,name='increase_lab2_att'),
 
     #increase all attendance
     path('sub1/cancel/<sub>',views.cancel_sub1_att,name='cancel_sub1_att'),

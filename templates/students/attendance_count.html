@@ -24,8 +24,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_sub1 %}
-                {{std_list.sub1}} 
+            <th>{% for sub in subjects %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -34,7 +34,7 @@
                 <td class="cls_name">{{ std_list.name }}</td>
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.sub1_att }}%</td>
-                <td><button class="btn btn-success" type="submit" onclick="location.href='{% url 'increase_sub1_att' std_list.id %}'">Present</button></td>
+                <td><button class="btn btn-success" type="submit" onclick="location.href='{% url 'take_sub1_att' std_list.id %}'">Take Attendance</button></td>
                 
             </tr>
         {% endfor %}
@@ -46,8 +46,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_sub2 %}
-                {{std_list.sub2}} 
+            <th>{% for sub in subjects %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -56,7 +56,7 @@
                 <td class="cls_name">{{ std_list.name }}</td>
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.sub2_att }}%</td>
-                <td><button class="btn btn-success" type="submit" onclick="location.href='{% url 'increase_sub2_att' std_list.id %}'">Present</button> </td>
+                <td><button class="btn btn-success" type="submit" onclick="location.href='{% url 'take_sub2_att' std_list.id %}'">Take Attendance</button> </td>
                 
             </tr>
         {% endfor %}
@@ -68,8 +68,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_sub3 %}
-                {{std_list.sub3}} 
+            <th>{% for sub in subjects %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -78,7 +78,7 @@
                 <td class="cls_name">{{ std_list.name }}</td>
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.sub3_att }}%</td>
-                <td><button class="btn btn-success" type="submit" onclick="location.href='{% url 'increase_sub3_att' std_list.id %}'">Present</button> </td>
+                <td><button class="btn btn-success" type="submit" onclick="location.href='{% url 'take_sub3_att' std_list.id %}'">Take Attendance</button> </td>
                 
             </tr>
         {% endfor %}
@@ -90,8 +90,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_sub4 %}
-                {{std_list.sub4}} 
+            <th>{% for sub in subjects %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -100,7 +100,7 @@
                 <td class="cls_name">{{ std_list.name }}</td>
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.sub4_att }}%</td>
-                <td><button class="btn btn-success" type="submit" onclick="location.href='{% url 'increase_sub4_att' std_list.id %}'">Present</button> </td>
+                <td><button class="btn btn-success" type="submit" onclick="location.href='{% url 'take_sub4_att' std_list.id %}'">Take Attendance</button> </td>
                 
             </tr>
         {% endfor %}
@@ -112,8 +112,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_sub5 %}
-                {{std_list.sub5}} 
+            <th>{% for sub in subjects %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -122,7 +122,7 @@
                 <td class="cls_name">{{ std_list.name }}</td>
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.sub5_att }}%</td>
-                <td><button class="btn btn-success" type="submit" onclick="location.href='{% url 'increase_sub5_att' std_list.id %}'">Present</button> </td>
+                <td><button class="btn btn-success" type="submit" onclick="location.href='{% url 'take_sub5_att' std_list.id %}'">Take Attendance</button> </td>
                 
             </tr>
         {% endfor %}
@@ -134,8 +134,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_sub6 %}
-                {{std_list.sub6}} 
+            <th>{% for sub in subjects %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -144,7 +144,7 @@
                 <td class="cls_name">{{ std_list.name }}</td>
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.sub6_att }}%</td>
-                <td><button class="btn btn-success" type="submit" onclick="location.href='{% url 'increase_sub6_att' std_list.id %}'">Present</button> </td>
+                <td><button class="btn btn-success" type="submit" onclick="location.href='{% url 'take_sub6_att' std_list.id %}'">Take Attendance</button> </td>
                 
             </tr>
         {% endfor %}
@@ -156,8 +156,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_lab1 %}
-                {{std_list.lab1}} 
+            <th>{% for sub in subjects %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -166,7 +166,7 @@
                 <td class="cls_name">{{ std_list.name }}</td>
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.lab1_att }}%</td>
-                <td><button class="btn btn-success" type="submit" onclick="location.href='{% url 'increase_lab1_att' std_list.id %}'">Present</button> </td>
+                <td><button class="btn btn-success" type="submit" onclick="location.href='{% url 'take_lab1_att' std_list.id %}'">Take Attendance</button> </td>
                 
             </tr>
         {% endfor %}
@@ -178,8 +178,8 @@
         <tr>
             <th>Name</th>
             <th>Admission ID</th>
-            <th>{% for std_list in student_list_lab2 %}
-                {{std_list.lab2}} 
+            <th>{% for sub in subjects %}
+                {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Action</th>
         </tr>
@@ -188,7 +188,7 @@
                 <td class="cls_name">{{ std_list.name }}</td>
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.lab2_att }}%</td>
-                <td><button class="btn btn-success" class="btn btn-success" type="submit" onclick="location.href='{% url 'increase_lab2_att' std_list.id %}'">Present</button> </td>
+                <td><button class="btn btn-success" class="btn btn-success" type="submit" onclick="location.href='{% url 'take_lab2_att' std_list.id %}'">Take Attendance</button> </td>
                 
             </tr>
         {% endfor %}

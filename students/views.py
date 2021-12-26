@@ -74,6 +74,9 @@ def delete_student(request, student_id):
 
 def attendance_count(request):
     subject = request.GET.get("subject", None)
+    print(subject)
+    subjects=StudentSubjectInfo.objects.filter(subject_name=subject)
+    
     if subject:
         student_list_sub1 = StudentInfo.objects.filter(sub1__subject_name=subject)
         student_list_sub2 = StudentInfo.objects.filter(sub2__subject_name=subject)
@@ -84,25 +87,26 @@ def attendance_count(request):
         student_list_lab1 = StudentInfo.objects.filter(lab1__subject_name=subject)
         student_list_lab2 = StudentInfo.objects.filter(lab2__subject_name=subject)
         
+        
 
         
 
         if student_list_sub1:
-            context = {"student_list_sub1": student_list_sub1}
+            context = {"student_list_sub1": student_list_sub1,'subjects':subjects}
         elif student_list_sub2:
-            context = {"student_list_sub2": student_list_sub2}
+            context = {"student_list_sub2": student_list_sub2,'subjects':subjects}
         elif student_list_sub3:
-            context = {"student_list_sub3": student_list_sub3}
+            context = {"student_list_sub3": student_list_sub3,'subjects':subjects}
         elif student_list_sub4:
-            context = {"student_list_sub4": student_list_sub4}
+            context = {"student_list_sub4": student_list_sub4,'subjects':subjects}
         elif student_list_sub5:
-            context = {"student_list_sub5": student_list_sub5}
+            context = {"student_list_sub5": student_list_sub5,'subjects':subjects}
         elif student_list_sub6:
-            context = {"student_list_sub6": student_list_sub6}
+            context = {"student_list_sub6": student_list_sub6,'subjects':subjects}
         elif student_list_lab1:
-            context = {"student_list_lab1": student_list_lab1}
+            context = {"student_list_lab1": student_list_lab1,'subjects':subjects}
         elif student_list_lab2:
-            context = {"student_list_lab2": student_list_lab2}
+            context = {"student_list_lab2": student_list_lab2,'subjects':subjects}
     else:
         context = {}
     return render(request, "students/attendance_count.html", context)
@@ -156,6 +160,63 @@ def cancel_lab2_att(request,sub):
     context={'student_list_lab2':student_list_lab2}
     return render(request,'students/attendance_list.html',context)
 
+#take attendace buttons functinality
+def take_sub1_att(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_sub1 = StudentInfo.objects.filter(sub1__subject_name=t.sub1)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub1)
+    context={'student_list_sub1':student_list_sub1,'subject':subject}
+    return render(request,'students/attendance_list.html',context)
+
+def take_sub2_att(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_sub2 = StudentInfo.objects.filter(sub2__subject_name=t.sub2)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub2)
+    context={'student_list_sub2':student_list_sub2,'subject':subject}
+    return render(request,'students/attendance_list.html',context)
+
+def take_sub3_att(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_sub3 = StudentInfo.objects.filter(sub3__subject_name=t.sub3)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub3)
+    context={'student_list_sub3':student_list_sub3,'subject':subject}
+    return render(request,'students/attendance_list.html',context)
+
+def take_sub4_att(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_sub4 = StudentInfo.objects.filter(sub4__subject_name=t.sub4)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub4)
+    context={'student_list_sub4':student_list_sub4,'subject':subject}
+    return render(request,'students/attendance_list.html',context)
+
+def take_sub5_att(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_sub5 = StudentInfo.objects.filter(sub5__subject_name=t.sub5)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub5)
+
+    context={'student_list_sub5':student_list_sub5,'subject':subject}
+    return render(request,'students/attendance_list.html',context)
+
+def take_sub6_att(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_sub6 = StudentInfo.objects.filter(sub6__subject_name=t.sub6)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub6)
+    context={'student_list_sub6':student_list_sub6,'subject':subject}
+    return render(request,'students/attendance_list.html',context)
+
+def take_lab1_att(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_lab1 = StudentInfo.objects.filter(lab1__subject_name=t.lab1)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.lab1)
+    context={'student_list_lab1':student_list_lab1,'subject':subject}
+    return render(request,'students/attendance_list.html',context)
+
+def take_lab2_att(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_lab2 = StudentInfo.objects.filter(lab2__subject_name=t.lab2)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.lab2)
+    context={'student_list_lab2':student_list_lab2,'subject':subject}
+    return render(request,'students/attendance_list.html',context)
 
 
 #increase attendance views
@@ -164,7 +225,8 @@ def increase_sub1_att(request,student_id):
     t.sub1_att = F('sub1_att')+1
     t.save()
     student_list_sub1 = StudentInfo.objects.filter(sub1__subject_name=t.sub1)
-    context={'student_list_sub1':student_list_sub1}
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub1)
+    context={'student_list_sub1':student_list_sub1,'subject':subject}
     return render(request,'students/attendance_list.html',context)
 
 def increase_sub2_att(request,student_id):
@@ -172,7 +234,8 @@ def increase_sub2_att(request,student_id):
     t.sub2_att = F('sub2_att')+1
     t.save()
     student_list_sub2 = StudentInfo.objects.filter(sub2__subject_name=t.sub2)
-    context={'student_list_sub2':student_list_sub2}
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub2)
+    context={'student_list_sub2':student_list_sub2,'subject':subject}
     return render(request,'students/attendance_list.html',context)
 
 def increase_sub3_att(request,student_id):
@@ -180,7 +243,8 @@ def increase_sub3_att(request,student_id):
     t.sub3_att = F('sub3_att')+1
     t.save()
     student_list_sub3 = StudentInfo.objects.filter(sub3__subject_name=t.sub3)
-    context={'student_list_sub3':student_list_sub3}
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub3)
+    context={'student_list_sub3':student_list_sub3,'subject':subject}
     return render(request,'students/attendance_list.html',context)
 
 def increase_sub4_att(request,student_id):
@@ -188,7 +252,8 @@ def increase_sub4_att(request,student_id):
     t.sub4_att = F('sub4_att')+1
     t.save()
     student_list_sub4 = StudentInfo.objects.filter(sub4__subject_name=t.sub4)
-    context={'student_list_sub4':student_list_sub4}
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub4)
+    context={'student_list_sub4':student_list_sub4,'subject':subject}
     return render(request,'students/attendance_list.html',context)
 
 def increase_sub5_att(request,student_id):
@@ -196,7 +261,8 @@ def increase_sub5_att(request,student_id):
     t.sub5_att = F('sub5_att')+1
     t.save()
     student_list_sub5 = StudentInfo.objects.filter(sub5__subject_name=t.sub5)
-    context={'student_list_sub5':student_list_sub5}
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub5)
+    context={'student_list_sub5':student_list_sub5,'subject':subject}
     return render(request,'students/attendance_list.html',context)
 
 def increase_sub6_att(request,student_id):
@@ -204,7 +270,9 @@ def increase_sub6_att(request,student_id):
     t.sub6_att = F('sub6_att')+1
     t.save()
     student_list_sub6 = StudentInfo.objects.filter(sub6__subject_name=t.sub6)
-    context={'student_list_sub6':student_list_sub6}
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub6)
+
+    context={'student_list_sub6':student_list_sub6,'subject':subject}
     return render(request,'students/attendance_list.html',context)
 
 def increase_lab1_att(request,student_id):
@@ -212,7 +280,9 @@ def increase_lab1_att(request,student_id):
     t.lab1_att = F('lab1_att')+1
     t.save()
     student_list_lab1 = StudentInfo.objects.filter(lab1__subject_name=t.lab1)
-    context={'student_list_lab1':student_list_lab1}
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.lab1)
+
+    context={'student_list_lab1':student_list_lab1,'subject':subject}
     return render(request,'students/attendance_list.html',context)
 
 def increase_lab2_att(request,student_id):
@@ -220,7 +290,9 @@ def increase_lab2_att(request,student_id):
     t.lab2_att = F('lab2_att')+1
     t.save()
     student_list_lab2 = StudentInfo.objects.filter(lab2__subject_name=t.lab2)
-    context={'student_list_lab2':student_list_lab2}
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.lab2)
+
+    context={'student_list_lab2':student_list_lab2,'subject':subject}
     return render(request,'students/attendance_list.html',context)
 
 

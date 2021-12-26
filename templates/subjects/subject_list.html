@@ -34,13 +34,13 @@
                                         <button type="button" class="btn btn-primary">Attendance</button>
                                     </a> -->
                                     <a href="{% url 'single_subject' subject.subject_code %}">
-                                        <button type="button" class="btn btn-primary">Details</button>
+                                        <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"></i></button>
                                     </a>
                                     <a href="{% url 'edit_subject' subject.subject_code %}">
                                         <button type="button" class="btn btn-info"><i class="fa fa-edit"></i></button>
                                     </a>
                                     <a href="{% url 'delete_subject' subject.subject_code %}">
-                                        <button type="button" class="btn btn-danger">X</button>
+                                        <button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button>
                                     </a>
                                 </td>
                             </tr>
