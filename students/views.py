@@ -107,7 +107,58 @@ def attendance_count(request):
         context = {}
     return render(request, "students/attendance_count.html", context)
 
+#cancel class views
+def cancel_sub1_att(request,sub):
+    s = StudentInfo.objects.filter(sub1__subject_name=sub).update(sub1_att=F('sub1_att')+1)
+    student_list_sub1 = StudentInfo.objects.filter(sub1__subject_name=sub)
+    context={'student_list_sub1':student_list_sub1}
+    return render(request,'students/attendance_list.html',context)
 
+def cancel_sub2_att(request,sub):
+    s = StudentInfo.objects.filter(sub2__subject_name=sub).update(sub2_att=F('sub2_att')+1)
+    student_list_sub2 = StudentInfo.objects.filter(sub2__subject_name=sub)
+    context={'student_list_sub2':student_list_sub2}
+    return render(request,'students/attendance_list.html',context)
+
+def cancel_sub3_att(request,sub):
+    s = StudentInfo.objects.filter(sub3__subject_name=sub).update(sub3_att=F('sub3_att')+1)
+    student_list_sub3 = StudentInfo.objects.filter(sub3__subject_name=sub)
+    context={'student_list_sub3':student_list_sub3}
+    return render(request,'students/attendance_list.html',context)
+
+def cancel_sub4_att(request,sub):
+    s = StudentInfo.objects.filter(sub4__subject_name=sub).update(sub4_att=F('sub4_att')+1)
+    student_list_sub4 = StudentInfo.objects.filter(sub4__subject_name=sub)
+    context={'student_list_sub4':student_list_sub4}
+    return render(request,'students/attendance_list.html',context)
+
+def cancel_sub5_att(request,sub):
+    s = StudentInfo.objects.filter(sub5__subject_name=sub).update(sub5_att=F('sub5_att')+1)
+    student_list_sub5 = StudentInfo.objects.filter(sub5__subject_name=sub)
+    context={'student_list_sub5':student_list_sub5}
+    return render(request,'students/attendance_list.html',context)
+
+def cancel_sub6_att(request,sub):
+    s = StudentInfo.objects.filter(sub6__subject_name=sub).update(sub6_att=F('sub6_att')+1)
+    student_list_sub6 = StudentInfo.objects.filter(sub6__subject_name=sub)
+    context={'student_list_sub6':student_list_sub6}
+    return render(request,'students/attendance_list.html',context)
+
+def cancel_lab1_att(request,sub):
+    s = StudentInfo.objects.filter(lab1__subject_name=sub).update(lab1_att=F('lab1_att')+1)
+    student_list_lab1 = StudentInfo.objects.filter(lab1__subject_name=sub)
+    context={'student_list_lab1':student_list_lab1}
+    return render(request,'students/attendance_list.html',context)
+
+def cancel_lab2_att(request,sub):
+    s = StudentInfo.objects.filter(lab2__subject_name=sub).update(lab2_att=F('lab2_att')+1)
+    student_list_lab2 = StudentInfo.objects.filter(lab2__subject_name=sub)
+    context={'student_list_lab2':student_list_lab2}
+    return render(request,'students/attendance_list.html',context)
+
+
+
+#increase attendance views
 def increase_sub1_att(request,student_id):
     t = StudentInfo.objects.get(id=student_id)
     t.sub1_att = F('sub1_att')+1
