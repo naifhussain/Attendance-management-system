@@ -3,22 +3,28 @@
 
     
 
-    <div class="row">
-        <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <h3>AMS</h3>
-
-    </div>
     
-    <ul class="nav navbar-nav ml-auto">
+    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button">
+            <span class="navbar-toggler-icon"></span>
+    </button>
+    <h3 style="margin-top: 6px;">Attendance Management System</h3>
+        
+        
+
+    
+    
+    <ul class="nav navbar-nav ml-auto" style="margin-right: 10px;">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
                aria-haspopup="true" aria-expanded="false">Account
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-lock"></i> Logout</a>
+                {% if user.is_authenticated %}
+                    <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-remove"></i> Logout</a>
+                {% else %}
+                    <a class="dropdown-item" href="{% url 'login' %}"><i class="fa fa-arrow-right"></i> Login</a>
+                    <a class="dropdown-item" href="{% url 'register' %}"><i class="fa fa-book"></i> Register</a>
+                {% endif %}
             </div>
         </li>
     </ul>
