@@ -30,6 +30,8 @@ class StudentBranch(models.Model): #new
 class StudentSem(models.Model):
     sem_number = models.IntegerField(max_length=1,primary_key=True)
     sem_name = models.CharField(max_length=10)
+    start_date = models.DateField(default='2021-08-02')
+    end_date = models.DateField(default='2022-01-31')
 
     def __str__(self):
         return self.sem_name
@@ -41,6 +43,8 @@ class StudentSubjectInfo(models.Model):
     subject_code = models.CharField(max_length=10,primary_key=True) #new
     professor_name = models.ForeignKey(TeacherInfo,on_delete=CASCADE,default=None, blank=True, null=True)
     branch_name = models.ForeignKey(StudentBranch,on_delete=CASCADE)
+    sem_number = models.ForeignKey(StudentSem,on_delete=CASCADE,default='3')
+    
 
     def __str__(self):
         return self.subject_name

@@ -2,16 +2,56 @@
 {% load static %}
 
 {% block content %}
+<style>
+    body {
+        background-color: #008585;
+    }
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, non!</div>
+</style>
+<div class="card rounded mt-2">
+    <div class="card-header text-center" id="header1">
+        <b>Anjuman Institute of Technology And Management</b>
     </div>
-    <div class="row">
-        <div class="col-md-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus assumenda hic voluptates delectus cum earum, adipisci accusamus mollitia molestiae sapiente beatae in praesentium odit ad vel. Alias, nobis, itaque iure incidunt corrupti quae aliquam rem veritatis commodi quisquam deserunt adipisci sunt totam doloremque officia illum. Quisquam adipisci non enim quam.
+    <div class="card-body rounded">
+        <div class="row">
+            <div class="card col-sm rounded">
+                <div class="card-img-top "><img src="{% static 'images/attendant-list.png'%}"
+                        class="img-fluid  mx-auto d-block" width="180px"></div>
+                <div class="card-body rounded">
+                    <h5 class="card-title">Attendace</h5>
+                    <p class="card-text">Please enter the subject name in the next page to take attendance.</p>
+                    <a href="{% url 'attendance_count' %}" class="btn btn-primary">Take Attendance</a>
+                </div>
+            </div>
+            <div class="card col-sm rounded">
+                <div class="card-image-top"><img src="{% static 'images/graduates.png'%}"
+                        class="img-fluid rounded mx-auto d-block" width="180px"></div>
+                <div class="card-body">
+                    <h5 class="card-title">Students</h5>
+                    <p class="card-text">Enter to view the list of students studying in AITM and their detais.</p>
+                    <a href="{% url 'student_list' %}" class="btn btn-primary">View Students</a>
+                </div>
+            </div>
+            <div class="card col-sm rounded">
+                <div class="card-image-top"><img src="{% static 'images/presentation.png'%}"
+                        class="img-fluid rounded mx-auto d-block" width="180px"></div>
+                <div class="card-body">
+                    <h5 class="card-title">Professors</h5>
+                    <p class="card-text">Enter to view the list of Professors teaching in AITM and their details.</p>
+                    <a href="{% url 'teacher_list' %}" class="btn btn-primary">View Professors</a>
+                </div>
+            </div>
+            <div class="card col-sm rounded">
+                <div class="card-image-top"><img src="{% static 'images/education.png'%}"
+                        class="img-fluid rounded mx-auto d-block" width="180px"></div>
+                <div class="card-body">
+                    <h5 class="card-title">Subjects</h5>
+                    <p class="card-text">Enter to view the list of Subjects taught in AITM and their details.</p>
+                    <a href="{% url 'subject_list' %}" class="btn btn-primary">View Subjects</a>
+                </div>
+            </div>
         </div>
     </div>
-   
 </div>
+
 {% endblock %}
