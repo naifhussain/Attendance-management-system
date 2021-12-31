@@ -2,8 +2,14 @@
 {% load static %}
 
 {% block content %}
+<style>
+    body {
+        background-color: #008585;
+    }
 
-<div class="card">
+
+</style>
+<div class="card mt-4 rounded">
     <div class="card-header">
         <h1>Attendance Count</h1>
     </div>
@@ -12,14 +18,14 @@
             <div class="col-md-6">
                 <form action="" method="GET">
                     Subject: <input type="text" name="subject" class="form-control">
-                    <input type="submit" value="Submit" class="btn btn-primary">
+                    <input type="submit" value="Submit" class="btn btn-primary mt-4 rounded">
                 </form>
             </div>
         </div>
     </div>
 </div>
 {% if messages %}
-<div class="alert alert-warning" role="alert">
+<div class="alert alert-warning rounded" role="alert">
     <ul class="messages">
         {% for message in messages %}
         <p class="text-center font-weight-bold">{{ message }}</p>
@@ -34,7 +40,7 @@
 
 
 
-<table class="table table-responsive-sm table-bordered table-striped table-sm">
+<table style="background-color: white;" class="table table-responsive-sm table-bordered table-striped table-sm table-hover">
     <tr>
         <th>Name</th>
         <th>Admission ID</th>
@@ -45,17 +51,17 @@
         <td class="cls_name">{{ std_list.name }}</td>
         <td class="cls_admission">{{ std_list.usn }}</td>
         {% if messages %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub1_att' std_list.id %}'" disabled>Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
             </td>
         {% else %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub1_att' std_list.id %}'">Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a></td>
         {% endif %}
     </tr>
@@ -67,7 +73,7 @@
 
 {% if student_list_sub2 %}
 <!-- for 2nd subject-->
-<table class="table table-responsive-sm table-bordered table-striped table-sm">
+<table style="background-color: white;" class="table table-responsive-sm table-bordered table-striped table-sm table-hover ">
     <tr>
         <th>Name</th>
         <th>Admission ID</th>
@@ -78,17 +84,17 @@
         <td class="cls_name">{{ std_list.name }}</td>
         <td class="cls_admission">{{ std_list.usn }}</td>
         {% if messages %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub2_att' std_list.id %}'" disabled>Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
             </td>
         {% else %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub2_att' std_list.id %}'">Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
             </td>
         {% endif %}
@@ -100,7 +106,7 @@
 
 {% if student_list_sub3 %}
 <!-- for 3rd subject-->
-<table class="table table-responsive-sm table-bordered table-striped table-sm">
+<table style="background-color: white;" class="table table-responsive-sm table-bordered table-striped table-sm table-hover ">
     <tr>
         <th>Name</th>
         <th>Admission ID</th>
@@ -113,17 +119,17 @@
         <td class="cls_admission">{{ std_list.usn }}</td>
         
         {% if messages %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub3_att' std_list.id %}'" disabled>Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
             </td>
         {% else %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub3_att' std_list.id %}'">Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
             </td>
         {% endif %}
@@ -135,7 +141,7 @@
 
 {% if student_list_sub4 %}
 <!-- for 4th subject-->
-<table class="table table-responsive-sm table-bordered table-striped table-sm">
+<table style="background-color: white;" class="table table-responsive-sm table-bordered table-striped table-sm table-hover ">
     <tr>
         <th>Name</th>
         <th>Admission ID</th>
@@ -148,17 +154,17 @@
         <td class="cls_admission">{{ std_list.usn }}</td>
         
         {% if messages %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub4_att' std_list.id %}'" disabled>Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
             </td>
         {% else %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub4_att' std_list.id %}'">Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a></td>
         {% endif %}
 
@@ -169,7 +175,7 @@
 
 {% if student_list_sub5 %}
 <!-- for 5th subject-->
-<table class="table table-responsive-sm table-bordered table-striped table-sm">
+<table style="background-color: white;" class="table table-responsive-sm table-bordered table-striped table-sm table-hover ">
     <tr>
         <th>Name</th>
         <th>Admission ID</th>
@@ -182,17 +188,17 @@
         <td class="cls_admission">{{ std_list.usn }}</td>
     
         {% if messages %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub5_att' std_list.id %}'" disabled>Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
             </td>
         {% else %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub5_att' std_list.id %}'">Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
             </td>
         {% endif %}
@@ -204,7 +210,7 @@
 
 {% if student_list_sub6 %}
 <!-- for 6th subject-->
-<table class="table table-responsive-sm table-bordered table-striped table-sm">
+<table style="background-color: white;" class="table table-responsive-sm table-bordered table-striped table-sm table-hover ">
     <tr>
         <th>Name</th>
         <th>Admission ID</th>
@@ -217,17 +223,17 @@
         <td class="cls_admission">{{ std_list.usn }}</td>
         
         {% if messages %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub6_att' std_list.id %}'" disabled>Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
             </td>
         {% else %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub6_att' std_list.id %}'">Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
             </td>
         {% endif %}
@@ -239,7 +245,7 @@
 
 {% if student_list_lab1 %}
 <!-- for 1st lab-->
-<table class="table table-responsive-sm table-bordered table-striped table-sm">
+<table style="background-color: white;" class="table table-responsive-sm table-bordered table-striped table-sm table-hover ">
     <tr>
         <th>Name</th>
         <th>Admission ID</th>
@@ -252,17 +258,17 @@
         <td class="cls_admission">{{ std_list.usn }}</td>
         
         {% if messages %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_lab1_att' std_list.id %}'" disabled>Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
             </td>
         {% else %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_lab1_att' std_list.id %}'">Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
             </td>
         {% endif %}
@@ -274,7 +280,7 @@
 
 {% if student_list_lab2 %}
 <!-- for 2nd lab-->
-<table class="table table-responsive-sm table-bordered table-striped table-sm">
+<table  style="background-color: white;" class="table table-responsive-sm table-bordered table-striped table-sm table-hover">
     <tr>
         <th>Name</th>
         <th>Admission ID</th>
@@ -287,17 +293,17 @@
         <td class="cls_admission">{{ std_list.usn }}</td>
         
         {% if messages %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_lab2_att' std_list.id %}'" disabled>Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
             </td>
         {% else %}
-        <td><button class="btn btn-success" type="submit"
+        <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_lab2_att' std_list.id %}'">Take Attendance</button>
                 <a href="{% url 'single_student' std_list.id %}">
-                    <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"> Details</i></button>
+                    <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
             </td>
         {% endif %}

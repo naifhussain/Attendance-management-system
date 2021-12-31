@@ -4,10 +4,15 @@
 {% block content %}
 
 {% include 'partials/_alerts.html' %}
+<style>
+    body {
+        background-color: #008585;
+    }
 
+</style>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card">
+        <div class="card mt-4 rounded">
             <div class="card-header">
                 <i class="fa fa-align-justify"></i> Students List</div>
             <div class="card-body">
@@ -34,13 +39,13 @@
                                 <td>{{ student.admission_date }}</td>
                                 <td>
                                     <a href="{% url 'single_student' student.id %}">
-                                        <button type="button" class="btn btn-secondary"><i class="fa fa-info-circle"></i></button>
+                                        <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"></i></button>
                                     </a>
                                     <a href="{% url 'edit_student' student.id %}">
-                                        <button type="button" class="btn btn-info"><i class="fa fa-edit"></i></button>
+                                        <button type="button" class="btn btn-info rounded"><i class="fa fa-edit"></i></button>
                                     </a>
                                     <a href="{% url 'delete_student' student.id %}">
-                                        <button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button>
+                                        <button type="button" class="btn btn-danger rounded"><i class="fa fa-remove"></i></button>
                                     </a>
                                 </td>
                             </tr>

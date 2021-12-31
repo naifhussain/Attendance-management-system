@@ -4,8 +4,13 @@
 {% block content %}
 
 {% include 'partials/_alerts.html' %}
+<style>
+    body {
+        background-color: #008585;
+    }
 
-<div class="card">
+</style>
+<div class="card mt-4 rounded">
     <div class="card-header">
         <h2>Edit Teacher Info</h2>
     </div>
@@ -13,7 +18,7 @@
         <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ edit_teacher_forms.as_p }}
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary rounded">Save</button>
         </form>
     </div>
 </div>
