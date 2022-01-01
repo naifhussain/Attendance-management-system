@@ -1,12 +1,17 @@
 {% load static %}
 <header class="app-header navbar bg-info">
 
-    
+    <style>
+        #logo-link{
+            text-decoration: none;
+        }
+    </style>
 
     
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button">
             <span class="navbar-toggler-icon"></span>
     </button>
+    <a id="logo-link"href="{% url 'home' %}"><img  style="width: 30px;" class="mx-2" src="{% static 'images/verify.png'%}"></a>
     <h4 style="margin-top: 6px;">Attendance Management System</h4>
         
         
