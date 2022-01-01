@@ -277,7 +277,7 @@ def attendance_count(request):
         now = datetime.datetime.now().date()
         messages.info(request, 'Attendance Not required, Government Holiday! '+str(now)+'.')
         return render(request,'students/attendance_count.html',context)
-    elif getDayName()==False:
+    elif getDayName()==True:
         messages.info(request, 'Attendance Not required, It is Friday!')
         return render(request,'students/attendance_count.html',context)
     return render(request, "students/attendance_count.html", context)
