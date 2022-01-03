@@ -4,12 +4,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.contrib import messages
-from .forms import CreateStudent,CreateSubject
+from .forms import CreateStudent,CreateSubject,CreateSem
 import datetime
 from django.db.models import F,Func
 from django.urls import resolve
 from datetime import date, timedelta
 
+#date functions
 #function to compute holidays
 def checkGovtHoliday():
     holidayList = [
@@ -79,7 +80,7 @@ def getDayName():
     else:
         return False
 
-#date functions
+
 def daterange(start_date, end_date):
     for n in range(int((end_date - start_date).days)):
         yield start_date + timedelta(n)
@@ -169,7 +170,9 @@ def getAttendancePercentage(start_date,end_date,sub_att):
     totalWorkingDays = int(getTotalWorkingDays(start_date,end_date))
     attendancePercentage = sub_att*100/totalWorkingDays
     return attendancePercentage
-# Create your views here.
+
+
+#students views
 def student_list(request):
     students = StudentInfo.objects.all()
     paginator = Paginator(students, 60)
@@ -281,6 +284,61 @@ def attendance_count(request):
         messages.info(request, 'Attendance Not required, It is Friday!')
         return render(request,'students/attendance_count.html',context)
     return render(request, "students/attendance_count.html", context)
+
+
+#semester views
+def sem_list(request):
+    sem = StudentSem.objects.all()
+    paginator = Paginator(sem, 60)
+    page = request.GET.get('page')
+    semesters = paginator.get_page(page)
+
+    context = {
+        "semesters": semesters
+    }
+    return render(request, "semester/sem_list.html", context)
+@login_required
+def edit_sem(request,sem_number):
+    sem_edit = StudentSem.objects.get(sem_number=sem_number)
+    edit_forms = CreateSem(instance=sem_edit)
+
+    if request.method == "POST":
+        edit_forms = CreateSem(request.POST, instance=sem_edit)
+
+        if edit_forms.is_valid():
+            edit_forms.save()
+            messages.success(request, "Edit the Semester Info Successfully!")
+            return redirect("sem_list")
+
+    context = {
+        "edit_forms": edit_forms
+    }
+    return render(request, "semester/edit_sem.html", context)
+
+
+@login_required
+def sem_register(request):
+    if request.method == "POST":
+        forms = CreateSem(request.POST)
+
+        if forms.is_valid():
+            forms.save()
+        messages.success(request, "Semester Registration Successfully!")
+        return redirect("sem_list")
+    else:
+        forms = CreateSem()
+
+    context = {
+        "forms": forms
+    }
+    return render(request, "semester/register_sem.html", context)
+
+@login_required
+def delete_sem(request, sem_number):
+    sem_delete = StudentSem.objects.get(sem_number=sem_number)
+    sem_delete.delete()
+    messages.success(request, "Deleted Sem Successfully")
+    return redirect("sem_list")
 
 #increment attendance of each student in a given subject
 @login_required

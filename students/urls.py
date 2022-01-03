@@ -39,6 +39,12 @@ urlpatterns = [
     path('lab1/cancel/<sub>',views.cancel_lab1_att,name='cancel_lab1_att'),
     path('lab2/cancel/<sub>',views.cancel_lab2_att,name='cancel_lab2_att'),
 
+    #urls for semesters
+    path('semester/registration/', views.sem_register, name='sem_register'),
+    path('allsemesters/', views.sem_list, name='sem_list'),
+    path('edit/semester/<int:sem_number>', views.edit_sem, name='edit_sem'),
+    path('delete/semester/<int:sem_number>', views.delete_sem, name='delete_sem'),
+
     path('subject/registration/', views.create_subject, name='create_subject'),
     path('allsubject/', views.subject_list, name='subject_list'),
     path('<slug:subject_code>/', views.single_subject, name='single_subject'),
