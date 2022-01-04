@@ -231,7 +231,7 @@ def edit_student(request, pk):
 def delete_student(request, student_id):
     student_delete = StudentInfo.objects.get(id=student_id)
     student_delete.delete()
-    messages.success(request, "Delete Student Info Successfully")
+    messages.success(request, "Deleted Student Info Successfully")
     return redirect("student_list")
 
 @login_required
