@@ -10,12 +10,13 @@
 </style>
 <div class="card rounded mt-2">
     <div class="card-header text-center" id="header1">
-        <b>Anjuman Institute of Technology And Management</b>
+        <b>Attendance Management System</b>
     </div>
     <div class="card-body rounded">
         <div class="row">
+            {% if user.is_authenticated%}
             <div class="card col-sm rounded">
-                <div class="card-img-top "><img src="{% static 'images/attendant-list.png'%}"
+                <div class="card-img-top mt-2"><img src="{% static 'images/attendant-list.png'%}"
                         class="img-fluid  mx-auto d-block" width="180px"></div>
                 <div class="card-body rounded">
                     <h5 class="card-title">Attendace</h5>
@@ -23,8 +24,9 @@
                     <a href="{% url 'attendance_count' %}" class="btn btn-primary rounded"><b>Take Attendance</b></a>
                 </div>
             </div>
+            {% endif %}
             <div class="card col-sm rounded">
-                <div class="card-image-top"><img src="{% static 'images/graduates.png'%}"
+                <div class="card-image-top mt-2"><img src="{% static 'images/graduates.png'%}"
                         class="img-fluid rounded mx-auto d-block" width="180px"></div>
                 <div class="card-body">
                     <h5 class="card-title">Students</h5>
@@ -33,7 +35,7 @@
                 </div>
             </div>
             <div class="card col-sm rounded">
-                <div class="card-image-top"><img src="{% static 'images/presentation.png'%}"
+                <div class="card-image-top mt-2"><img src="{% static 'images/presentation.png'%}"
                         class="img-fluid rounded mx-auto d-block" width="180px"></div>
                 <div class="card-body">
                     <h5 class="card-title">Professors</h5>
@@ -42,7 +44,7 @@
                 </div>
             </div>
             <div class="card col-sm rounded">
-                <div class="card-image-top"><img src="{% static 'images/education.png'%}"
+                <div class="card-image-top mt-2"><img src="{% static 'images/education.png'%}"
                         class="img-fluid rounded mx-auto d-block" width="180px"></div>
                 <div class="card-body">
                     <h5 class="card-title">Subjects</h5>

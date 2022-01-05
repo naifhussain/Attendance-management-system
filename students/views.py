@@ -161,9 +161,10 @@ def getRemaingDays(end_date): #get remaing days of semster
     remainingDays= abs(end_date-today).days-holidays
     return remainingDays
 
-def getElapsedDays(start_date):
+def getElapsedDays(start_date,end_date):
     today=date.today()
-    elapsedDays =abs(today-start_date).days
+    holidays=getHolidays(start_date,end_date)
+    elapsedDays =abs(today-start_date).days-holidays
     return elapsedDays
 
 def getAttendancePercentage(start_date,end_date,sub_att): 
@@ -195,7 +196,7 @@ def single_student(request, student_id):
 @login_required
 def student_regi(request):
     if request.method == "POST":
-        forms = CreateStudent(request.POST)
+        forms = CreateStudent(request.POST, request.FILES or None)
 
         if forms.is_valid():
             forms.save()
@@ -343,16 +344,20 @@ def delete_sem(request, sem_number):
 #increment attendance of each student in a given subject
 @login_required
 def cancel_sub1_att(request,sub):
-    s = StudentInfo.objects.filter(sub1__subject_name=sub).update(sub1_att=F('sub1_att')+1)
+    StudentInfo.objects.filter(sub1__subject_name=sub).update(sub1_att=F('sub1_att')+1)
+    
+    
     student_list_sub1 = StudentInfo.objects.filter(sub1__subject_name=sub)
     subject=StudentSubjectInfo.objects.filter(subject_name=sub)
-
     subsem=StudentSubjectInfo.objects.get(subject_name=sub)#to get the constant fields  into the page
     sem=StudentSem.objects.get(sem_name=subsem.sem_number)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
+    StudentInfo.objects.filter(sub1__subject_name=sub).update(att_percent_sub1=F('sub1_att')*100/elapsedDays)
+
+    
 
     context={'student_list_sub1':student_list_sub1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
     return render(request,'students/attendance_list.html',context)
@@ -360,7 +365,7 @@ def cancel_sub1_att(request,sub):
 #increment attendance of each student in a given subject
 @login_required
 def cancel_sub2_att(request,sub):
-    s = StudentInfo.objects.filter(sub2__subject_name=sub).update(sub2_att=F('sub2_att')+1)
+    StudentInfo.objects.filter(sub2__subject_name=sub).update(sub2_att=F('sub2_att')+1)
     student_list_sub2 = StudentInfo.objects.filter(sub2__subject_name=sub)
     subject=StudentSubjectInfo.objects.filter(subject_name=sub)
 
@@ -368,8 +373,10 @@ def cancel_sub2_att(request,sub):
     sem=StudentSem.objects.get(sem_name=subsem.sem_number)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
+    StudentInfo.objects.filter(sub2__subject_name=sub).update(att_percent_sub2=F('sub2_att')*100/elapsedDays)
+
 
     context={'student_list_sub2':student_list_sub2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
     return render(request,'students/attendance_list.html',context)
@@ -384,8 +391,11 @@ def cancel_sub3_att(request,sub):
     sem=StudentSem.objects.get(sem_name=subsem.sem_number)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
+
+    StudentInfo.objects.filter(sub3__subject_name=sub).update(att_percent_sub3=F('sub3_att')*100/elapsedDays)
+
 
     context={'student_list_sub3':student_list_sub3,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
     return render(request,'students/attendance_list.html',context)
@@ -400,8 +410,10 @@ def cancel_sub4_att(request,sub):
     sem=StudentSem.objects.get(sem_name=subsem.sem_number)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
+
+    StudentInfo.objects.filter(sub4__subject_name=sub).update(att_percent_sub4=F('sub4_att')*100/elapsedDays)
 
     context={'student_list_sub4':student_list_sub4,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
     return render(request,'students/attendance_list.html',context)
@@ -416,8 +428,11 @@ def cancel_sub5_att(request,sub):
     sem=StudentSem.objects.get(sem_name=subsem.sem_number)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
+
+    StudentInfo.objects.filter(sub5__subject_name=sub).update(att_percent_sub5=F('sub5_att')*100/elapsedDays)
+
 
     context={'student_list_sub5':student_list_sub5,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
     return render(request,'students/attendance_list.html',context)
@@ -432,8 +447,10 @@ def cancel_sub6_att(request,sub):
     sem=StudentSem.objects.get(sem_name=subsem.sem_number)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
+
+    StudentInfo.objects.filter(sub6__subject_name=sub).update(att_percent_sub6=F('sub6_att')*100/elapsedDays)
 
     context={'student_list_sub6':student_list_sub6,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
     return render(request,'students/attendance_list.html',context)
@@ -448,8 +465,10 @@ def cancel_lab1_att(request,sub):
     sem=StudentSem.objects.get(sem_name=subsem.sem_number)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
+
+    StudentInfo.objects.filter(lab1__subject_name=sub).update(att_percent_lab1=F('lab1_att')*100/elapsedDays)
 
     context={'student_list_lab1':student_list_lab1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
     return render(request,'students/attendance_list.html',context)
@@ -464,8 +483,10 @@ def cancel_lab2_att(request,sub):
     sem=StudentSem.objects.get(sem_name=subsem.sem_number)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
+
+    StudentInfo.objects.filter(lab2__subject_name=sub).update(att_percent_lab2=F('lab2_att')*100/elapsedDays)
 
     context={'student_list_lab2':student_list_lab2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
     return render(request,'students/attendance_list.html',context)
@@ -480,12 +501,12 @@ def take_sub1_att(request,student_id):
     sem=StudentSem.objects.get(sem_name=t.sem_name)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
     
-    
 
-    context={'student_list_sub1':student_list_sub1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    context={'student_list_sub1':student_list_sub1,'subject':subject,
+    'remainingDays':remainingDays,'elapsedDays':elapsedDays}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -497,7 +518,7 @@ def take_sub2_att(request,student_id):
     sem=StudentSem.objects.get(sem_name=t.sem_name)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
 
@@ -513,7 +534,7 @@ def take_sub3_att(request,student_id):
     sem=StudentSem.objects.get(sem_name=t.sem_name)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
     context={'student_list_sub3':student_list_sub3,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
@@ -528,7 +549,7 @@ def take_sub4_att(request,student_id):
     sem=StudentSem.objects.get(sem_name=t.sem_name)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
     context={'student_list_sub4':student_list_sub4,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
@@ -543,7 +564,7 @@ def take_sub5_att(request,student_id):
     sem=StudentSem.objects.get(sem_name=t.sem_name)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
     context={'student_list_sub5':student_list_sub5,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
@@ -558,7 +579,7 @@ def take_sub6_att(request,student_id):
     sem=StudentSem.objects.get(sem_name=t.sem_name)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
     context={'student_list_sub6':student_list_sub6,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
@@ -573,7 +594,7 @@ def take_lab1_att(request,student_id):
     sem=StudentSem.objects.get(sem_name=t.sem_name)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
     context={'student_list_lab1':student_list_lab1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
@@ -588,7 +609,7 @@ def take_lab2_att(request,student_id):
     sem=StudentSem.objects.get(sem_name=t.sem_name)
     sdate=sem.start_date
     edate=sem.end_date
-    elapsedDays = getElapsedDays(sdate)
+    elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
     context={'student_list_lab2':student_list_lab2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
@@ -604,10 +625,13 @@ def increase_sub1_att(request,student_id):
     sdate=sem.start_date
     edate=sem.end_date
     remainingDays=getRemaingDays(edate)
-    elapsedDays =getElapsedDays(sdate)
+    elapsedDays =getElapsedDays(sdate,edate)
 
     t.sub1_att = F('sub1_att') +1
+    t.att_percent_sub1= t.sub1_att*100/elapsedDays
     t.save()
+
+
     
     
     student_list_sub1 = StudentInfo.objects.filter(sub1__subject_name=t.sub1)
@@ -624,9 +648,10 @@ def increase_sub2_att(request,student_id):
     sdate=sem.start_date
     edate=sem.end_date
     remainingDays=getRemaingDays(edate)
-    elapsedDays =getElapsedDays(sdate)
+    elapsedDays =getElapsedDays(sdate,edate)
 
     t.sub2_att = F('sub2_att')+1
+    t.att_percent_sub2= t.sub2_att*100/elapsedDays
     t.save()
     student_list_sub2 = StudentInfo.objects.filter(sub2__subject_name=t.sub2)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.sub2)
@@ -641,9 +666,10 @@ def increase_sub3_att(request,student_id):
     sdate=sem.start_date
     edate=sem.end_date
     remainingDays=getRemaingDays(edate)
-    elapsedDays =getElapsedDays(sdate)
+    elapsedDays =getElapsedDays(sdate,edate)
 
     t.sub3_att = F('sub3_att')+1
+    t.att_percent_sub3= t.sub3_att*100/elapsedDays
     t.save()
     student_list_sub3 = StudentInfo.objects.filter(sub3__subject_name=t.sub3)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.sub3)
@@ -658,9 +684,10 @@ def increase_sub4_att(request,student_id):
     sdate=sem.start_date
     edate=sem.end_date
     remainingDays=getRemaingDays(edate)
-    elapsedDays =getElapsedDays(sdate)
+    elapsedDays =getElapsedDays(sdate,edate)
 
     t.sub4_att = F('sub4_att')+1
+    t.att_percent_sub4 = t.sub4_att*100/elapsedDays
     t.save()
     student_list_sub4 = StudentInfo.objects.filter(sub4__subject_name=t.sub4)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.sub4)
@@ -675,9 +702,10 @@ def increase_sub5_att(request,student_id):
     sdate=sem.start_date
     edate=sem.end_date
     remainingDays=getRemaingDays(edate)
-    elapsedDays =getElapsedDays(sdate)
+    elapsedDays =getElapsedDays(sdate,edate)
 
     t.sub5_att = F('sub5_att')+1
+    t.att_percent_sub5= t.sub5_att*100/elapsedDays
     t.save()
     student_list_sub5 = StudentInfo.objects.filter(sub5__subject_name=t.sub5)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.sub5)
@@ -692,9 +720,10 @@ def increase_sub6_att(request,student_id):
     sdate=sem.start_date
     edate=sem.end_date
     remainingDays=getRemaingDays(edate)
-    elapsedDays =getElapsedDays(sdate)
+    elapsedDays =getElapsedDays(sdate,edate)
 
     t.sub6_att = F('sub6_att')+1
+    t.att_percent_sub6= t.sub6_att*100/elapsedDays
     t.save()
     student_list_sub6 = StudentInfo.objects.filter(sub6__subject_name=t.sub6)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.sub6)
@@ -710,9 +739,10 @@ def increase_lab1_att(request,student_id):
     sdate=sem.start_date
     edate=sem.end_date
     remainingDays=getRemaingDays(edate)
-    elapsedDays =getElapsedDays(sdate)
+    elapsedDays =getElapsedDays(sdate,edate)
 
     t.lab1_att = F('lab1_att')+1
+    t.att_percent_lab1= t.lab1_att*100/elapsedDays
     t.save()
     student_list_lab1 = StudentInfo.objects.filter(lab1__subject_name=t.lab1)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.lab1)
@@ -728,9 +758,10 @@ def increase_lab2_att(request,student_id):
     sdate=sem.start_date
     edate=sem.end_date
     remainingDays=getRemaingDays(edate)
-    elapsedDays =getElapsedDays(sdate)
+    elapsedDays =getElapsedDays(sdate,edate)
 
     t.lab2_att = F('lab2_att')+1
+    t.att_percent_lab2= t.lab2_att*100/elapsedDays
     t.save()
     student_list_lab2 = StudentInfo.objects.filter(lab2__subject_name=t.lab2)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.lab2)

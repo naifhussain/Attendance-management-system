@@ -94,6 +94,15 @@ class StudentInfo(models.Model):
     lab1_att = models.IntegerField(null=True,default=0)
     lab2 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='lab2',null=True)
     lab2_att = models.IntegerField(null=True,default=0)
+    att_percent_sub1 = models.DecimalField(default=0,decimal_places=2,max_digits=5)
+    att_percent_sub2 = models.DecimalField(default=0,decimal_places=2,max_digits=5)
+    att_percent_sub3 = models.DecimalField(default=0,decimal_places=2,max_digits=5)
+    att_percent_sub4 = models.DecimalField(default=0,decimal_places=2,max_digits=5)
+    att_percent_sub5 = models.DecimalField(default=0,decimal_places=2,max_digits=5)
+    att_percent_sub6 = models.DecimalField(default=0,decimal_places=2,max_digits=5)
+    att_percent_lab1 = models.DecimalField(default=0,decimal_places=2,max_digits=5)
+    att_percent_lab2 = models.DecimalField(default=0,decimal_places=2,max_digits=5)
+
 
 
 

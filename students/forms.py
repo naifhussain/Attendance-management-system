@@ -4,13 +4,14 @@ from .models import StudentInfo, StudentSem,StudentSubjectInfo
 class CreateStudent(forms.ModelForm):
     class Meta:
         model = StudentInfo
-        exclude = ("student_img", "fathers_img", "mothers_img", )
+        fields = "__all__"
 
         widgets = {
-            'batch_year': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Academic Year'}),
+            'batch_year': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Academic Year'}),
             'admission_date': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'Admission Date'}),
             'usn': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Admission ID'}),
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Name'}),
+            'student_img': forms.FileInput(attrs={'class': 'form-control'}),
             'age': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Age'}),
             'gender': forms.Select(attrs={'class': 'form-control'}),
             'class_type': forms.Select(attrs={'class': 'form-control'}),

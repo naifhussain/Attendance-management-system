@@ -3,6 +3,7 @@ from .models import TeacherInfo
 from .forms import CreateTeacher
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def teacher_list(request):
@@ -24,7 +25,7 @@ def single_teacher(request, teacher_id):
     }
     return render(request, "teachers/single_teacher.html", context)
 
-
+@login_required 
 def create_teacher(request):
     if request.method == "POST":
         forms = CreateTeacher(request.POST, request.FILES or None)
@@ -41,7 +42,7 @@ def create_teacher(request):
     }
     return render(request, "teachers/create_teacher.html", context)
 
-
+@login_required
 def edit_teacher(request, pk):
     teacher_edit = TeacherInfo.objects.get(id=pk)
     edit_teacher_forms = CreateTeacher(instance=teacher_edit)
@@ -59,7 +60,7 @@ def edit_teacher(request, pk):
     }
     return render(request, "teachers/edit_teacher.html", context)
 
-
+@login_required
 def delete_teacher(request, teacher_id):
     teacher_delete = TeacherInfo.objects.get(id=teacher_id)
     teacher_delete.delete()

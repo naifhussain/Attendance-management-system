@@ -29,7 +29,7 @@ urlpatterns = [
     path('lab1/<student_id>',views.increase_lab1_att,name='increase_lab1_att'),
     path('lab2/<student_id>',views.increase_lab2_att,name='increase_lab2_att'),
 
-    #increase all attendance
+    #cancel the class
     path('sub1/cancel/<sub>',views.cancel_sub1_att,name='cancel_sub1_att'),
     path('sub2/cancel/<sub>',views.cancel_sub2_att,name='cancel_sub2_att'),
     path('sub3/cancel/<sub>',views.cancel_sub3_att,name='cancel_sub3_att'),

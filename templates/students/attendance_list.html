@@ -5,11 +5,15 @@
 <style>
     body {
         background-color: #008585;
+    
+    }
+    #heading{
+        color: white;
     }
     
 </style>
 
-<h1>{% for sub in subject%}
+<h1 id="heading">{% for sub in subject%}
     {{sub.subject_name}}
     {% endfor %}Attendance</h1>
 {% if student_list_sub1 %} <!-- for 1st subject--> 
@@ -22,6 +26,7 @@
                 {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
             <th>Remaining Working Days</th>
+            <th>Attendance Percentage</th>
             <th>Action</th>
         </tr>
         {% for std_list in student_list_sub1 %}
@@ -30,8 +35,9 @@
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.sub1_att }} Days Attended / {{elapsedDays}} Days</td>
                 <td>{{ remainingDays }} Days</td>
+                <td>{{ std_list.att_percent_sub1}} %</td>
                 <td><button class="btn btn-success rounded" type="submit" onclick="location.href='{% url 'increase_sub1_att' std_list.id %}'">Present</button>
-                     <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_sub1_att' std_list.sub1%}'">Cancel Class</button></td>
+                     <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_sub1_att' std_list.sub1 %}'">Cancel Class</button></td>
                 
             </tr>
         {% endfor %}
@@ -46,6 +52,8 @@
             <th>{% for sub in subject %}
                 {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
+                <th>Remaining Working Days</th>
+                <th>Attendance Percentage</th>
             <th>Action</th>
         </tr>
         {% for std_list in student_list_sub2 %}
@@ -54,8 +62,9 @@
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.sub2_att }} Days Attended / {{elapsedDays}} Days</td>
                 <td>{{ remainingDays }} Days</td>
+                <td>{{ std_list.att_percent_sub2}} %</td>
                 <td><button class="btn btn-success rounded" type="submit" onclick="location.href='{% url 'increase_sub2_att' std_list.id %}'">Present</button>
-                    <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_sub2_att' std_list.sub2%}'">Cancel Class</button> </td>
+                    <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_sub2_att' std_list.sub2 %}'">Cancel Class</button> </td>
                 
             </tr>
         {% endfor %}
@@ -70,6 +79,8 @@
             <th>{% for sub in subject %}
                 {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
+                <th>Remaining Working Days</th>
+                <th>Attendance Percentage</th>
             <th>Action</th>
         </tr>
         {% for std_list in student_list_sub3 %}
@@ -78,8 +89,9 @@
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.sub3_att }} Days Attended / {{elapsedDays}} Days</td>
                 <td>{{ remainingDays }} Days</td>
+                <td>{{ std_list.att_percent_sub3}} %</td>
                 <td><button class="btn btn-success rounded" type="submit" onclick="location.href='{% url 'increase_sub3_att' std_list.id %}'">Present</button>
-                    <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_sub3_att' std_list.sub3%}'">Cancel Class</button> </td>
+                    <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_sub3_att' std_list.sub3 %}'">Cancel Class</button> </td>
                 
             </tr>
         {% endfor %}
@@ -94,6 +106,8 @@
             <th>{% for sub in subject %}
                 {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
+                <th>Remaining Working Days</th>
+                <th>Attendance Percentage</th>
             <th>Action</th>
         </tr>
         {% for std_list in student_list_sub4 %}
@@ -102,8 +116,9 @@
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.sub4_att }} Days Attended / {{elapsedDays}} Days</td>
                 <td>{{ remainingDays }} Days</td>
+                <td>{{ std_list.att_percent_sub4}} %</td>
                 <td><button class="btn btn-success rounded" type="submit" onclick="location.href='{% url 'increase_sub4_att' std_list.id %}'">Present</button>
-                    <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_sub4_att' std_list.sub4%}'">Cancel Class</button> </td>
+                    <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_sub4_att' std_list.sub4 %}'">Cancel Class</button> </td>
                 
             </tr>
         {% endfor %}
@@ -118,6 +133,8 @@
             <th>{% for sub in subject %}
                 {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
+                <th>Remaining Working Days</th>
+                <th>Attendance Percentage</th>
             <th>Action</th>
         </tr>
         {% for std_list in student_list_sub5 %}
@@ -126,8 +143,9 @@
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.sub5_att }} Days Attended / {{elapsedDays}} Days</td>
                 <td>{{ remainingDays }} Days</td>
+                <td>{{ std_list.att_percent_sub5}} %</td>
                 <td><button class="btn btn-success rounded" type="submit" onclick="location.href='{% url 'increase_sub5_att' std_list.id %}'">Present</button> 
-                    <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_sub5_att' std_list.sub5%}'">Cancel Class</button></td>
+                    <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_sub5_att' std_list.sub5 %}'">Cancel Class</button></td>
                 
             </tr>
         {% endfor %}
@@ -142,6 +160,8 @@
             <th>{% for sub in subject %}
                 {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
+                <th>Remaining Working Days</th>
+                <th>Attendance Percentage</th>
             <th>Action</th>
         </tr>
         {% for std_list in student_list_sub6 %}
@@ -150,8 +170,9 @@
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.sub6_att }} Days Attended / {{elapsedDays}} Days</td>
                 <td>{{ remainingDays }} Days</td>
+                <td>{{ std_list.att_percent_sub6}} %</td>
                 <td><button class="btn btn-success rounded" type="submit" onclick="location.href='{% url 'increase_sub6_att' std_list.id %}'">Present</button>
-                    <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_sub6_att' std_list.sub6%}'">Cancel Class</button> </td>
+                    <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_sub6_att' std_list.sub6 %}'">Cancel Class</button> </td>
                 
             </tr>
         {% endfor %}
@@ -166,6 +187,8 @@
             <th>{% for sub in subject %}
                 {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
+                <th>Remaining Working Days</th>
+                <th>Attendance Percentage</th>
             <th>Action</th>
         </tr>
         {% for std_list in student_list_lab1 %}
@@ -174,8 +197,9 @@
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.lab1_att }} Days Attended / {{elapsedDays}} Days</td>
                 <td>{{ remainingDays }} Days</td>
+                <td>{{ std_list.att_percent_lab1}} %</td>
                 <td><button class="btn btn-success rounded" type="submit" onclick="location.href='{% url 'increase_lab1_att' std_list.id %}'">Present</button>
-                    <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_lab1_att' std_list.lab1%}'">Cancel Class</button> </td>
+                    <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_lab1_att' std_list.lab1 %}'">Cancel Class</button> </td>
                 
             </tr>
         {% endfor %}
@@ -190,6 +214,8 @@
             <th>{% for sub in subject %}
                 {{sub.subject_name}} 
                 {% endfor %} Attendance</th>
+                <th>Remaining Working Days</th>
+                <th>Attendance Percentage</th>
             
             <th>Action</th>
         </tr>
@@ -199,8 +225,9 @@
                 <td class="cls_admission">{{ std_list.usn }}</td>
                 <td class="cls_class">{{ std_list.lab2_att }} Days Attended / {{elapsedDays}} Days</td>
                 <td>{{ remainingDays }} Days</td>
+                <td>{{ std_list.att_percent_lab2}} %</td>
                 <td><button class="btn btn-success rounded" type="submit" onclick="location.href='{% url 'increase_lab2_att' std_list.id %}'">Present</button>
-                    <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_lab2_att' std_list.lab2%}'">Cancel Class</button></td>
+                    <button class="btn btn-warning rounded" type="submit" onclick="location.href='{% url 'cancel_lab2_att' std_list.lab2 %}'">Cancel Class</button></td>
                 
             </tr>
         {% endfor %}

@@ -13,14 +13,17 @@
                         <a class="nav-link" href="{% url 'student_list' %}">
                             <i class="nav-icon icon-list"></i> Student List</a>
                     </li>
+                    {% if user.is_authenticated%}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'attendance_count' %}">
                             <i class="nav-icon icon-notebook"></i> Attendance</a>
                     </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'student_regi' %}">
                             <i class="nav-icon icon-plus"></i> Registration</a>
                     </li>
+                    {% endif %}
                 </ul>
             </li>
             <li class="nav-item nav-dropdown">
@@ -31,11 +34,12 @@
                         <a class="nav-link" href="{% url 'subject_list' %}">
                             <i class="nav-icon icon-list"></i> Subject List</a>
                     </li>
-
+                    {% if user.is_authenticated%}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'create_subject' %}">
                             <i class="nav-icon icon-plus"></i> Add Subject</a>
                     </li>
+                    {% endif %}
                 </ul>
             </li>
             <li class="nav-item nav-dropdown">
@@ -46,10 +50,12 @@
                         <a class="nav-link" href="{% url 'teacher_list' %}">
                             <i class="nav-icon icon-list"></i> Professors List</a>
                     </li>
+                    {% if user.is_authenticated%}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'create_teacher' %}">
                             <i class="nav-icon icon-plus"></i> Add New Professor</a>
                     </li>
+                    {% endif %}
                 </ul>
             </li>
             <li class="nav-item nav-dropdown">
@@ -60,10 +66,12 @@
                         <a class="nav-link" href="{% url 'sem_list' %}">
                             <i class="nav-icon icon-list"></i> Semester List</a>
                     </li>
+                    {% if user.is_authenticated%}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'sem_register' %}">
                             <i class="nav-icon icon-plus"></i> Register New Sem</a>
                     </li>
+                    {% endif %}
                 </ul>
             </li>
         </ul>

@@ -15,6 +15,9 @@
             #mobile-navbar {
                 display: none;
             }
+            #Account-logo{
+                display: none;
+            }
         }
         @media (max-width: 992px) {
             #full-name {
@@ -23,6 +26,12 @@
 
             #short-form {
                 display: block;
+            }
+            #Account-logo{
+                display: block;
+            }
+            #Account-name{
+                display: none;
             }
 
         }
@@ -49,9 +58,11 @@
                         Students
                     </a>
                     <div class="dropdown-menu rounded" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Student List</a>
-                        <a class="dropdown-item" href="#">Attendance</a>
-                        <a class="dropdown-item" href="#">Student Register</a>
+                        <a class="dropdown-item" href="{% url 'student_list' %}">Student List</a>
+                        {% if user.is_authenticated%}
+                        <a class="dropdown-item" href="{% url 'attendance_count' %}">Attendance</a>
+                        <a class="dropdown-item" href="{% url 'student_regi' %}">Student Register</a>
+                        {% endif %}
                     </div>
                 </li>
 
@@ -61,9 +72,10 @@
                         Subjects
                     </a>
                     <div class="dropdown-menu rounded" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Subjects List</a>
-
-                        <a class="dropdown-item" href="#">Add Subject</a>
+                        <a class="dropdown-item" href="{% url 'subject_list' %}">Subjects List</a>
+                        {% if user.is_authenticated%}
+                        <a class="dropdown-item" href="{% url 'create_subject' %}">Add Subject</a>
+                        {% endif %}
                     </div>
                 </li>
 
@@ -73,9 +85,10 @@
                         Professors
                     </a>
                     <div class="dropdown-menu rounded" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Professor List</a>
-
-                        <a class="dropdown-item" href="#">Add Professor</a>
+                        <a class="dropdown-item" href="{% url 'teacher_list' %}">Professor List</a>
+                        {% if user.is_authenticated%}
+                        <a class="dropdown-item" href="{% url 'create_teacher' %}">Add Professor</a>
+                        {% endif %}
                     </div>
                 </li>
 
@@ -85,16 +98,31 @@
                         Semesters
                     </a>
                     <div class="dropdown-menu rounded" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Semester List</a>
-                        <a class="dropdown-item" href="#">Attendance</a>
-                        <a class="dropdown-item" href="#">Add Semester</a>
+                        <a class="dropdown-item" href="{% url 'sem_list' %}">Semester List</a>
+                        {% if user.is_authenticated%}
+                        <a class="dropdown-item" href="{% url 'sem_register' %}">Add Semester</a>
+                        {% endif %}
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
-
-    <ul class="nav navbar-nav ml-auto" style="margin-right: 10px;">
+    <ul class="nav navbar-nav ml-auto" style="margin-right: 10px;" id="Account-logo">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
+                aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right rounded">
+                {% if user.is_authenticated %}
+                <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-remove"></i> Logout</a>
+                {% else %}
+                <a class="dropdown-item" href="{% url 'login' %}"><i class="fa fa-arrow-right"></i> Login</a>
+                <a class="dropdown-item" href="{% url 'register' %}"><i class="fa fa-book"></i> Register</a>
+                {% endif %}
+            </div>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav ml-auto" style="margin-right: 10px;" id="Account-name">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
                 aria-haspopup="true" aria-expanded="false">Account
