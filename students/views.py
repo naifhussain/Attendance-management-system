@@ -357,9 +357,11 @@ def cancel_sub1_att(request,sub):
     remainingDays = getRemaingDays(edate)
     StudentInfo.objects.filter(sub1__subject_name=sub).update(att_percent_sub1=F('sub1_att')*100/elapsedDays)
 
+    extra_class_sub1=student_list_sub1[0].extra_class_sub1
+
     
 
-    context={'student_list_sub1':student_list_sub1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    context={'student_list_sub1':student_list_sub1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub1':extra_class_sub1}
     return render(request,'students/attendance_list.html',context)
 
 #increment attendance of each student in a given subject
@@ -377,8 +379,10 @@ def cancel_sub2_att(request,sub):
     remainingDays = getRemaingDays(edate)
     StudentInfo.objects.filter(sub2__subject_name=sub).update(att_percent_sub2=F('sub2_att')*100/elapsedDays)
 
+    extra_class_sub2=student_list_sub2[0].extra_class_sub2
 
-    context={'student_list_sub2':student_list_sub2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+
+    context={'student_list_sub2':student_list_sub2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub2':extra_class_sub2}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -396,8 +400,10 @@ def cancel_sub3_att(request,sub):
 
     StudentInfo.objects.filter(sub3__subject_name=sub).update(att_percent_sub3=F('sub3_att')*100/elapsedDays)
 
+    extra_class_sub3=student_list_sub3[0].extra_class_sub3
 
-    context={'student_list_sub3':student_list_sub3,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+
+    context={'student_list_sub3':student_list_sub3,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub3':extra_class_sub3}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -415,7 +421,9 @@ def cancel_sub4_att(request,sub):
 
     StudentInfo.objects.filter(sub4__subject_name=sub).update(att_percent_sub4=F('sub4_att')*100/elapsedDays)
 
-    context={'student_list_sub4':student_list_sub4,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    extra_class_sub4=student_list_sub4[0].extra_class_sub4
+
+    context={'student_list_sub4':student_list_sub4,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub4':extra_class_sub4}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -433,8 +441,10 @@ def cancel_sub5_att(request,sub):
 
     StudentInfo.objects.filter(sub5__subject_name=sub).update(att_percent_sub5=F('sub5_att')*100/elapsedDays)
 
+    extra_class_sub5=student_list_sub5[0].extra_class_sub5
 
-    context={'student_list_sub5':student_list_sub5,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+
+    context={'student_list_sub5':student_list_sub5,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub5':extra_class_sub5}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -452,7 +462,9 @@ def cancel_sub6_att(request,sub):
 
     StudentInfo.objects.filter(sub6__subject_name=sub).update(att_percent_sub6=F('sub6_att')*100/elapsedDays)
 
-    context={'student_list_sub6':student_list_sub6,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    extra_class_sub6=student_list_sub6[0].extra_class_sub6
+
+    context={'student_list_sub6':student_list_sub6,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub6':extra_class_sub6}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -470,7 +482,9 @@ def cancel_lab1_att(request,sub):
 
     StudentInfo.objects.filter(lab1__subject_name=sub).update(att_percent_lab1=F('lab1_att')*100/elapsedDays)
 
-    context={'student_list_lab1':student_list_lab1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    extra_class_lab1=student_list_lab1[0].extra_class_lab1
+
+    context={'student_list_lab1':student_list_lab1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_lab1':extra_class_lab1}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -486,9 +500,11 @@ def cancel_lab2_att(request,sub):
     elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
+    extra_class_lab2=student_list_lab2[0].extra_class_lab2
+
     StudentInfo.objects.filter(lab2__subject_name=sub).update(att_percent_lab2=F('lab2_att')*100/elapsedDays)
 
-    context={'student_list_lab2':student_list_lab2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    context={'student_list_lab2':student_list_lab2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_lab2':extra_class_lab2}
     return render(request,'students/attendance_list.html',context)
 
 #take attendace buttons functinality
@@ -504,9 +520,10 @@ def take_sub1_att(request,student_id):
     elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
     
+    extra_class_sub1=student_list_sub1[0].extra_class_sub1
 
     context={'student_list_sub1':student_list_sub1,'subject':subject,
-    'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub1':extra_class_sub1}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -521,8 +538,11 @@ def take_sub2_att(request,student_id):
     elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
+    extra_class_sub2=student_list_sub2[0].extra_class_sub2
 
-    context={'student_list_sub2':student_list_sub2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+
+    context={'student_list_sub2':student_list_sub2,'subject':subject,
+    'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub2':extra_class_sub2}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -537,7 +557,9 @@ def take_sub3_att(request,student_id):
     elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
-    context={'student_list_sub3':student_list_sub3,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    extra_class_sub3=student_list_sub3[0].extra_class_sub3
+
+    context={'student_list_sub3':student_list_sub3,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub3':extra_class_sub3}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -552,7 +574,9 @@ def take_sub4_att(request,student_id):
     elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
-    context={'student_list_sub4':student_list_sub4,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    extra_class_sub4=student_list_sub4[0].extra_class_sub4
+
+    context={'student_list_sub4':student_list_sub4,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub4':extra_class_sub4}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -567,7 +591,9 @@ def take_sub5_att(request,student_id):
     elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
-    context={'student_list_sub5':student_list_sub5,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    extra_class_sub5=student_list_sub5[0].extra_class_sub5
+
+    context={'student_list_sub5':student_list_sub5,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub5':extra_class_sub5}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -582,7 +608,9 @@ def take_sub6_att(request,student_id):
     elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
-    context={'student_list_sub6':student_list_sub6,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    extra_class_sub6=student_list_sub6[0].extra_class_sub6
+
+    context={'student_list_sub6':student_list_sub6,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub6':extra_class_sub6}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -597,7 +625,9 @@ def take_lab1_att(request,student_id):
     elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
-    context={'student_list_lab1':student_list_lab1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    extra_class_lab1=student_list_lab1[0].extra_class_lab1
+
+    context={'student_list_lab1':student_list_lab1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_lab1':extra_class_lab1}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -612,7 +642,9 @@ def take_lab2_att(request,student_id):
     elapsedDays = getElapsedDays(sdate,edate)
     remainingDays = getRemaingDays(edate)
 
-    context={'student_list_lab2':student_list_lab2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    extra_class_lab2=student_list_lab2[0].extra_class_lab2
+
+    context={'student_list_lab2':student_list_lab2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_lab2':extra_class_lab2}
     return render(request,'students/attendance_list.html',context)
 
 
@@ -637,7 +669,8 @@ def increase_sub1_att(request,student_id):
     student_list_sub1 = StudentInfo.objects.filter(sub1__subject_name=t.sub1)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.sub1)
     
-    context={'student_list_sub1':student_list_sub1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    extra_class_sub1=student_list_sub1[0].extra_class_sub1
+    context={'student_list_sub1':student_list_sub1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub1':extra_class_sub1}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -655,7 +688,10 @@ def increase_sub2_att(request,student_id):
     t.save()
     student_list_sub2 = StudentInfo.objects.filter(sub2__subject_name=t.sub2)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.sub2)
-    context={'student_list_sub2':student_list_sub2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+
+    extra_class_sub2=student_list_sub2[0].extra_class_sub2
+
+    context={'student_list_sub2':student_list_sub2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub2':extra_class_sub2}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -673,7 +709,10 @@ def increase_sub3_att(request,student_id):
     t.save()
     student_list_sub3 = StudentInfo.objects.filter(sub3__subject_name=t.sub3)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.sub3)
-    context={'student_list_sub3':student_list_sub3,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+
+    extra_class_sub3=student_list_sub3[0].extra_class_sub3
+
+    context={'student_list_sub3':student_list_sub3,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub3':extra_class_sub3}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -691,7 +730,10 @@ def increase_sub4_att(request,student_id):
     t.save()
     student_list_sub4 = StudentInfo.objects.filter(sub4__subject_name=t.sub4)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.sub4)
-    context={'student_list_sub4':student_list_sub4,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+
+    extra_class_sub4=student_list_sub4[0].extra_class_sub4
+
+    context={'student_list_sub4':student_list_sub4,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub4':extra_class_sub4}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -709,7 +751,10 @@ def increase_sub5_att(request,student_id):
     t.save()
     student_list_sub5 = StudentInfo.objects.filter(sub5__subject_name=t.sub5)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.sub5)
-    context={'student_list_sub5':student_list_sub5,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+
+    extra_class_sub5=student_list_sub5[0].extra_class_sub5
+
+    context={'student_list_sub5':student_list_sub5,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub5':extra_class_sub5}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -728,7 +773,9 @@ def increase_sub6_att(request,student_id):
     student_list_sub6 = StudentInfo.objects.filter(sub6__subject_name=t.sub6)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.sub6)
 
-    context={'student_list_sub6':student_list_sub6,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    extra_class_sub6=student_list_sub6[0].extra_class_sub6
+
+    context={'student_list_sub6':student_list_sub6,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub6':extra_class_sub6}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -747,7 +794,9 @@ def increase_lab1_att(request,student_id):
     student_list_lab1 = StudentInfo.objects.filter(lab1__subject_name=t.lab1)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.lab1)
 
-    context={'student_list_lab1':student_list_lab1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    extra_class_lab1=student_list_lab1[0].extra_class_lab1
+
+    context={'student_list_lab1':student_list_lab1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_lab1':extra_class_lab2}
     return render(request,'students/attendance_list.html',context)
 
 @login_required
@@ -766,9 +815,148 @@ def increase_lab2_att(request,student_id):
     student_list_lab2 = StudentInfo.objects.filter(lab2__subject_name=t.lab2)
     subject=StudentSubjectInfo.objects.filter(subject_name=t.lab2)
 
-    context={'student_list_lab2':student_list_lab2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays}
+    extra_class_lab2=student_list_lab2[0].extra_class_lab2
+
+    context={'student_list_lab2':student_list_lab2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_lab2':extra_class_lab2}
     return render(request,'students/attendance_list.html',context)
 
+#counter for extra classses
+def extra_class_sub1(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_sub1 = StudentInfo.objects.filter(sub1__subject_name=t.sub1)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub1)
+
+    sem=StudentSem.objects.get(sem_name=t.sem_name)
+    sdate=sem.start_date
+    edate=sem.end_date
+    elapsedDays = getElapsedDays(sdate,edate)
+    remainingDays = getRemaingDays(edate)
+    
+    StudentInfo.objects.filter(sub1__subject_name=t.sub1).update(extra_class_sub1=F('extra_class_sub1')+1)
+    extra_class_sub1=student_list_sub1[0].extra_class_sub1
+
+    context={'student_list_sub1':student_list_sub1,'subject':subject,
+    'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub1':extra_class_sub1}
+    return render(request,'students/attendance_list.html',context)
+    
+def extra_class_sub2(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_sub2 = StudentInfo.objects.filter(sub2__subject_name=t.sub2)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub2)
+
+    sem=StudentSem.objects.get(sem_name=t.sem_name)
+    sdate=sem.start_date
+    edate=sem.end_date
+    elapsedDays = getElapsedDays(sdate,edate)
+    remainingDays = getRemaingDays(edate)
+
+    StudentInfo.objects.filter(sub2__subject_name=t.sub2).update(extra_class_sub2=F('extra_class_sub2')+1)
+    extra_class_sub2=student_list_sub2[0].extra_class_sub2
+
+    context={'student_list_sub2':student_list_sub2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub2':extra_class_sub2}
+    return render(request,'students/attendance_list.html',context)
+
+def extra_class_sub3(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_sub3 = StudentInfo.objects.filter(sub3__subject_name=t.sub3)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub3)
+
+    sem=StudentSem.objects.get(sem_name=t.sem_name)
+    sdate=sem.start_date
+    edate=sem.end_date
+    elapsedDays = getElapsedDays(sdate,edate)
+    remainingDays = getRemaingDays(edate)
+
+    StudentInfo.objects.filter(sub3__subject_name=t.sub3).update(extra_class_sub3=F('extra_class_sub3')+1)
+    extra_class_sub3=student_list_sub3[0].extra_class_sub3
+
+    context={'student_list_sub3':student_list_sub3,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub3':extra_class_sub3}
+    return render(request,'students/attendance_list.html',context)
+
+def extra_class_sub4(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_sub4 = StudentInfo.objects.filter(sub4__subject_name=t.sub4)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub4)
+
+    sem=StudentSem.objects.get(sem_name=t.sem_name)
+    sdate=sem.start_date
+    edate=sem.end_date
+    elapsedDays = getElapsedDays(sdate,edate)
+    remainingDays = getRemaingDays(edate)
+
+    StudentInfo.objects.filter(sub4__subject_name=t.sub4).update(extra_class_sub4=F('extra_class_sub4')+1)
+    extra_class_sub4=student_list_sub4[0].extra_class_sub4
+
+    context={'student_list_sub4':student_list_sub4,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub4':extra_class_sub4}
+    return render(request,'students/attendance_list.html',context)
+
+def extra_class_sub5(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_sub5 = StudentInfo.objects.filter(sub5__subject_name=t.sub5)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub5)
+
+    sem=StudentSem.objects.get(sem_name=t.sem_name)
+    sdate=sem.start_date
+    edate=sem.end_date
+    elapsedDays = getElapsedDays(sdate,edate)
+    remainingDays = getRemaingDays(edate)
+
+    StudentInfo.objects.filter(sub5__subject_name=t.sub5).update(extra_class_sub5=F('extra_class_sub5')+1)
+    extra_class_sub5=student_list_sub5[0].extra_class_sub5
+
+    context={'student_list_sub5':student_list_sub5,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub5':extra_class_sub5}
+    return render(request,'students/attendance_list.html',context)
+
+def extra_class_sub6(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_sub6 = StudentInfo.objects.filter(sub6__subject_name=t.sub6)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.sub6)
+
+    sem=StudentSem.objects.get(sem_name=t.sem_name)
+    sdate=sem.start_date
+    edate=sem.end_date
+    elapsedDays = getElapsedDays(sdate,edate)
+    remainingDays = getRemaingDays(edate)
+
+    StudentInfo.objects.filter(sub6__subject_name=t.sub6).update(extra_class_sub6=F('extra_class_sub6')+1)
+    extra_class_sub6=student_list_sub6[0].extra_class_sub6
+
+    context={'student_list_sub6':student_list_sub6,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_sub6':extra_class_sub6}
+    return render(request,'students/attendance_list.html',context)
+
+def extra_class_lab1(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_lab1 = StudentInfo.objects.filter(lab1__subject_name=t.lab1)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.lab1)
+
+    sem=StudentSem.objects.get(sem_name=t.sem_name)
+    sdate=sem.start_date
+    edate=sem.end_date
+    elapsedDays = getElapsedDays(sdate,edate)
+    remainingDays = getRemaingDays(edate)
+
+    StudentInfo.objects.filter(lab1__subject_name=t.lab1).update(extra_class_lab1=F('extra_class_lab1')+1)
+    extra_class_lab1=student_list_lab1[0].extra_class_lab1
+
+    context={'student_list_lab1':student_list_lab1,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_lab1':extra_class_lab1}
+    return render(request,'students/attendance_list.html',context)
+
+def extra_class_lab2(request,student_id):
+    t = StudentInfo.objects.get(id=student_id)
+    student_list_lab2 = StudentInfo.objects.filter(lab2__subject_name=t.lab2)
+    subject=StudentSubjectInfo.objects.filter(subject_name=t.lab2)
+
+    sem=StudentSem.objects.get(sem_name=t.sem_name)
+    sdate=sem.start_date
+    edate=sem.end_date
+    elapsedDays = getElapsedDays(sdate,edate)
+    remainingDays = getRemaingDays(edate)
+
+    StudentInfo.objects.filter(lab2__subject_name=t.lab2).update(extra_class_lab2=F('extra_class_lab2')+1)
+    extra_class_lab2=student_list_lab2[0].extra_class_lab2
+
+    context={'student_list_lab2':student_list_lab2,'subject':subject,'remainingDays':remainingDays,'elapsedDays':elapsedDays,'extra_class_lab2':extra_class_lab2}
+    return render(request,'students/attendance_list.html',context)
 
 
 #to create edit and delete a subject

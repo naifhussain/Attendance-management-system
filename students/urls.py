@@ -39,6 +39,16 @@ urlpatterns = [
     path('lab1/cancel/<sub>',views.cancel_lab1_att,name='cancel_lab1_att'),
     path('lab2/cancel/<sub>',views.cancel_lab2_att,name='cancel_lab2_att'),
 
+    #increment extra class counter
+    path('sub1/extraclass/<student_id>',views.extra_class_sub1,name='extra_class_sub1'),
+    path('sub2/extraclass/<student_id>',views.extra_class_sub2,name='extra_class_sub2'),
+    path('sub3/extraclass/<student_id>',views.extra_class_sub3,name='extra_class_sub3'),
+    path('sub4/extraclass/<student_id>',views.extra_class_sub4,name='extra_class_sub4'),
+    path('sub5/extraclass/<student_id>',views.extra_class_sub5,name='extra_class_sub5'),
+    path('sub6/extraclass/<student_id>',views.extra_class_sub6,name='extra_class_sub6'),
+    path('lab1/extraclass/<student_id>',views.extra_class_lab1,name='extra_class_lab1'),
+    path('lab2/extraclass/<student_id>',views.extra_class_lab2,name='extra_class_lab2'),
+
     #urls for semesters
     path('semester/registration/', views.sem_register, name='sem_register'),
     path('allsemesters/', views.sem_list, name='sem_list'),

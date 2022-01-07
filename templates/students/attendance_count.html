@@ -11,9 +11,9 @@
 </style>
 <div class="card mt-4 rounded">
     <div class="card-header">
-        <h1>Attendance Count</h1>
+        <h1>{% for subject in subjects%}{{subject.subject_name}}{%endfor%} Attendance Count</h1>
     </div>
-    <div class="card-body">
+    <div class="card-body"> 
         <div class="row">
             <div class="col-md-6">
                 <form action="" method="GET">
@@ -53,6 +53,9 @@
         {% if messages %}
         <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub1_att' std_list.id %}'" disabled>Take Attendance</button>
+                <a href="{% url 'extra_class_sub1' std_list.id %}">
+                    <button class="btn btn-danger rounded">Extra Class</button>
+                </a>
                 <a href="{% url 'single_student' std_list.id %}">
                     <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
@@ -60,6 +63,7 @@
         {% else %}
         <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub1_att' std_list.id %}'">Take Attendance</button>
+                
                 <a href="{% url 'single_student' std_list.id %}">
                     <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a></td>
@@ -86,6 +90,9 @@
         {% if messages %}
         <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub2_att' std_list.id %}'" disabled>Take Attendance</button>
+                <a href="{% url 'extra_class_sub2' std_list.id %}">
+                    <button class="btn btn-danger rounded">Extra Class</button>
+                </a>
                 <a href="{% url 'single_student' std_list.id %}">
                     <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
@@ -121,6 +128,9 @@
         {% if messages %}
         <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub3_att' std_list.id %}'" disabled>Take Attendance</button>
+                <a href="{% url 'extra_class_sub3' std_list.id %}">
+                    <button class="btn btn-danger rounded">Extra Class</button>
+                </a>
                 <a href="{% url 'single_student' std_list.id %}">
                     <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
@@ -156,6 +166,9 @@
         {% if messages %}
         <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub4_att' std_list.id %}'" disabled>Take Attendance</button>
+                <a href="{% url 'extra_class_sub4' std_list.id %}">
+                    <button class="btn btn-danger rounded">Extra Class</button>
+                </a>
                 <a href="{% url 'single_student' std_list.id %}">
                     <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
@@ -190,6 +203,9 @@
         {% if messages %}
         <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub5_att' std_list.id %}'" disabled>Take Attendance</button>
+                <a href="{% url 'extra_class_sub5' std_list.id %}">
+                    <button class="btn btn-danger rounded">Extra Class</button>
+                </a>
                 <a href="{% url 'single_student' std_list.id %}">
                     <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
@@ -225,6 +241,9 @@
         {% if messages %}
         <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_sub6_att' std_list.id %}'" disabled>Take Attendance</button>
+                <a href="{% url 'extra_class_sub6' std_list.id %}">
+                    <button class="btn btn-danger rounded">Extra Class</button>
+                </a>
                 <a href="{% url 'single_student' std_list.id %}">
                     <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
@@ -260,6 +279,9 @@
         {% if messages %}
         <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_lab1_att' std_list.id %}'" disabled>Take Attendance</button>
+                <a href="{% url 'extra_class_lab1' std_list.id %}">
+                    <button class="btn btn-danger rounded">Extra Class</button>
+                </a>
                 <a href="{% url 'single_student' std_list.id %}">
                     <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>
@@ -295,6 +317,9 @@
         {% if messages %}
         <td><button class="btn btn-success rounded" type="submit"
                 onclick="location.href='{% url 'take_lab2_att' std_list.id %}'" disabled>Take Attendance</button>
+                <a href="{% url 'extra_class_lab2' std_list.id %}">
+                    <button class="btn btn-danger rounded">Extra Class</button>
+                </a>
                 <a href="{% url 'single_student' std_list.id %}">
                     <button type="button" class="btn btn-secondary rounded"><i class="fa fa-info-circle"> Details</i></button>
                 </a>

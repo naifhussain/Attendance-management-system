@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.deletion import CASCADE
+from django.db.models.deletion import CASCADE, SET_NULL
 from teachers.models import TeacherInfo
 
 # Create your models here.
@@ -77,22 +77,22 @@ class StudentInfo(models.Model):
     shift_type = models.ForeignKey(StudentShiftInfo, on_delete=models.CASCADE)
     branch_name = models.ForeignKey(StudentBranch,on_delete=CASCADE)
     student_img = models.ImageField(upload_to='photos/%Y/%m/%d/')
-    sub1 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub1',null=True)
+    sub1 = models.ForeignKey(StudentSubjectInfo,on_delete=SET_NULL,related_name='sub1',null=True)
     sub1_att = models.IntegerField(null=True,default=0)
-    sub2 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub2',null=True)
+    sub2 = models.ForeignKey(StudentSubjectInfo,on_delete=SET_NULL,related_name='sub2',null=True)
     sub2_att = models.IntegerField(null=True,default=0) 
-    sub3 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub3',null=True)
+    sub3 = models.ForeignKey(StudentSubjectInfo,on_delete=SET_NULL,related_name='sub3',null=True)
     sub3_att = models.IntegerField(null=True,default=0) 
-    sub4 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub4',null=True)
+    sub4 = models.ForeignKey(StudentSubjectInfo,on_delete=SET_NULL,related_name='sub4',null=True)
     sub4_att = models.IntegerField(null=True,default=0)
-    sub5 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub5',null=True)
-    sub5_att = models.IntegerField(null=True,default=0) 
-    sub6 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='sub6',null=True)
+    sub5 = models.ForeignKey(StudentSubjectInfo,on_delete=SET_NULL,related_name='sub5',null=True)
+    sub5_att = models.IntegerField(null=True,default=0)
+    sub6 = models.ForeignKey(StudentSubjectInfo,on_delete=SET_NULL,related_name='sub6',null=True)
     sub6_att = models.IntegerField(null=True,default=0)
 
-    lab1 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='lab1',null=True)
+    lab1 = models.ForeignKey(StudentSubjectInfo,on_delete=SET_NULL,related_name='lab1',null=True)
     lab1_att = models.IntegerField(null=True,default=0)
-    lab2 = models.ForeignKey(StudentSubjectInfo,on_delete=CASCADE,related_name='lab2',null=True)
+    lab2 = models.ForeignKey(StudentSubjectInfo,on_delete=SET_NULL,related_name='lab2',null=True)
     lab2_att = models.IntegerField(null=True,default=0)
     att_percent_sub1 = models.DecimalField(default=0,decimal_places=2,max_digits=5)
     att_percent_sub2 = models.DecimalField(default=0,decimal_places=2,max_digits=5)
@@ -103,6 +103,14 @@ class StudentInfo(models.Model):
     att_percent_lab1 = models.DecimalField(default=0,decimal_places=2,max_digits=5)
     att_percent_lab2 = models.DecimalField(default=0,decimal_places=2,max_digits=5)
 
+    extra_class_sub1 = models.IntegerField(default=0)
+    extra_class_sub2 = models.IntegerField(default=0)
+    extra_class_sub3 = models.IntegerField(default=0)
+    extra_class_sub4 = models.IntegerField(default=0)
+    extra_class_sub5 = models.IntegerField(default=0)
+    extra_class_sub6 = models.IntegerField(default=0)
+    extra_class_lab1 = models.IntegerField(default=0)
+    extra_class_lab2 = models.IntegerField(default=0)
 
 
 
